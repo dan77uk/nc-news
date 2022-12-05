@@ -1,3 +1,9 @@
+import Articles from "./components/Articles";
+
 export default function App() {
-  return <div>App</div>;
+  return (
+    <main>
+      <Articles />
+    </main>
+  );
 }
