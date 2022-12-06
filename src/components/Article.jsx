@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getArticleById, getCommentsByArticleId } from "../api";
 import Comments from "./Comments";
 
+
 export default function Article() {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
@@ -51,6 +52,7 @@ export default function Article() {
           </>
         )}
       </section>
+
     </>
   );
 }
