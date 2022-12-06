@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById } from "../api";
+import { getArticleById, getCommentsByArticleId } from "../api";
+import Comments from "./Comments";
+
 
 export default function Article() {
   const { article_id } = useParams();
@@ -11,7 +13,10 @@ export default function Article() {
   useEffect(() => {
     getArticleById(article_id).then((res) => {
       setArticle(res);
-      setIsLoading(false);
+      getCommentsByArticleId(article_id).then((res) => {
+        setComments(res);
+        setIsLoading(false);
+      });
     });
   }, [article_id]);
 
@@ -33,6 +38,21 @@ export default function Article() {
         </div>
         <p className="single-article--body">{article.body}</p>
       </article>
+      <section className="single-article--comments">
+        {comments.length === 0 ? (
+          <h3>No comments yet</h3>
+        ) : (
+          <>
+            <h3>Comments</h3>
+            <ul>
+              {comments.map((comment) => {
+                return <Comments key={comment.comment_id} comment={comment} />;
+              })}
+            </ul>
+          </>
+        )}
+      </section>
+
     </>
   );
 }
