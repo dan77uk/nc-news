@@ -13,12 +13,12 @@
 }
 
 main {
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
 }
-/*------------------- ARTICLE LIST ---------------------*/
+/*------------------- ARTICLES.JSX ---------------------*/
 .article-list {
-  padding: 20px;
+  padding: 40px;
   border: var(--layoutBorder);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -62,19 +62,19 @@ main {
 
 .article-list--article-info--interactions {
   display: flex;
-  justify-content: space-between;
   font-size: 0.9rem;
   margin-top: auto;
   font-size: 0.8rem;
+  gap: 10px;
 }
 
 .article-list--article-info--interactions p {
-  padding: 6px 12px;
-  border-radius: 10px;
+  padding: 4px 12px;
+  border-radius: 5px;
 }
 
 .article-list--article-info--interactions p span {
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-family: "Bebas Neue", cursive;
 }
 
@@ -86,16 +86,54 @@ main {
   background-color: rgb(226, 217, 43);
 }
 
+/*------------------- ARTICLE.JSX ---------------------*/
+.single-article {
+  padding: 40px;
+}
+
+.single-article--topic {
+  text-transform: capitalize;
+}
+
+.single-article h2 {
+  font-size: 5rem;
+  font-family: "Bebas Neue", cursive;
+  line-height: 1;
+  color: var(--headline);
+  margin-top: 20px;
+}
+
+.single-article .article-list--article-info--interactions {
+  margin: 20px 0;
+}
+
+.single-article--body {
+  border-top: var(--layoutBorder);
+  border-bottom: var(--layoutBorder);
+  margin: 20px 0;
+  padding: 40px 0;
+}
+
 @media (max-width: 900px) {
-  /*------------------- ARTICLE LIST ---------------------*/
+  /*------------------- ARTICLES.JSX ---------------------*/
   .article-list {
     grid-template-columns: 1fr 1fr;
   }
+
+  /*------------------- ARTICLE.JSX ---------------------*/
+  .single-article h2 {
+    font-size: 4rem;
+  }
 }
 
-@media (max-width: 600px) {
-  /*------------------- ARTICLE LIST ---------------------*/
+@media (max-width: 700px) {
+  /*------------------- ARTICLES.JSX ---------------------*/
   .article-list {
     grid-template-columns: 1fr;
+  }
+
+  /*------------------- ARTICLE.JSX ---------------------*/
+  .single-article h2 {
+    font-size: 3rem;
   }
 }

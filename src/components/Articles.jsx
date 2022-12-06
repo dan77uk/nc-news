@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getArticles } from "../api";
 export default function Articles() {
   const [articles, setArticles] = useState([]);
@@ -22,7 +23,9 @@ export default function Articles() {
           <li key={article.article_id}>
             <h3>
               {article.title}
-              <span>View Article</span>
+              <span>
+                <Link to={`/articles/${article.article_id}`}>View Article</Link>
+              </span>
             </h3>
             <div className="article-list--article-info">
               <h4>By {article.author}</h4>
