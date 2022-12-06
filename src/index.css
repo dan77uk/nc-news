@@ -71,6 +71,7 @@ main {
 .article-list--article-info--interactions p {
   padding: 4px 12px;
   border-radius: 5px;
+  margin: 0;
 }
 
 .article-list--article-info--interactions p span {
@@ -113,11 +114,6 @@ main {
   padding: 40px 0 0 0;
 }
 
-.single-article--voteButtons {
-  border-bottom: solid 1px;
-  padding-bottom: 40px;
-}
-
 .single-article--voteButtons button {
   font-size: 0.8rem;
   padding: 3px 12px;
@@ -137,25 +133,37 @@ main {
 /*------------------- COMMENTS.JSX ---------------------*/
 
 .single-article--comments {
-  padding: 0 40px 40px 40px;
+  margin: 0 40px;
+}
+
+.single-article--comments--title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: var(--layoutBorder);
+  padding-top: 20px;
+  margin-bottom: 20px;
 }
 
 .single-article--comments h3 {
   font-size: 1.2rem;
   color: var(--headline);
-  margin-bottom: 20px;
+  line-height: 1;
+  margin: 0;
 }
 
 .single-article--comments ul {
+  padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px;
+  gap: 20px;
 }
 
 .single-article--comments li {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 10px;
   font-size: 0.9rem;
   border: var(--layoutBorder);
   border-radius: 10px;
@@ -178,7 +186,20 @@ main {
 }
 
 .single-article--comments--votes {
-  margin-top: auto;
+  margin: auto 0 0 0;
+}
+
+/*------------------- COMMENTMODAL.JSX ---------------------*/
+.commentForm {
+  margin: 20px;
+}
+.commentForm textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  border: var(--layoutBorder);
+  margin-bottom: 20px;
 }
 
 @media (max-width: 900px) {

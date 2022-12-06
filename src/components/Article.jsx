@@ -6,23 +6,29 @@ import {
   patchArticleVote,
 } from "../api";
 import Comments from "./Comments";
+import CommentModal from "./CommentModal";
+import Button from "react-bootstrap/Button";
 
-export default function Article() {
+export default function Article({ user }) {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [voted, setVoted] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
     getArticleById(article_id).then((res) => {
       setArticle(res);
-      getCommentsByArticleId(article_id).then((res) => {
-        setComments(res);
-        setIsLoading(false);
-      });
+      setIsLoading(false);
     });
   }, [article_id]);
+
+  useEffect(() => {
+    getCommentsByArticleId(article_id).then((res) => {
+      setComments(res);
+    });
+  }, [comments]);
 
   const handleVote = (event) => {
     let voteValue = 0;
@@ -60,12 +66,12 @@ export default function Article() {
         <p className="single-article--body">{article.body}</p>
         {!voted ? (
           <div className="single-article--voteButtons">
-            <button onClick={handleVote} value={"up"}>
+            <Button variant="primary" onClick={handleVote} value={"up"}>
               Vote Up
-            </button>
-            <button onClick={handleVote} value={"down"}>
+            </Button>
+            <Button variant="secondary" onClick={handleVote} value={"down"}>
               Vote Down
-            </button>
+            </Button>
           </div>
         ) : (
           <p className="single-article--vote-confirmation">
@@ -73,12 +79,28 @@ export default function Article() {
           </p>
         )}
       </article>
+
       <section className="single-article--comments">
         {comments.length === 0 ? (
-          <h3>No comments yet</h3>
+          <div className="single-article--comments--title">
+            <h3>No comments yet</h3>
+          </div>
         ) : (
           <>
-            <h3>Comments</h3>
+            <div className="single-article--comments--title">
+              <h3>Comments</h3>
+              {user ? (
+                <Button
+                  variant="outline-primary"
+                  size="sm"
+                  onClick={() => setModalShow(true)}
+                >
+                  Add a comment
+                </Button>
+              ) : (
+                <button>Login to comment</button>
+              )}
+            </div>
             <ul>
               {comments.map((comment) => {
                 return <Comments key={comment.comment_id} comment={comment} />;
@@ -87,6 +109,14 @@ export default function Article() {
           </>
         )}
       </section>
+      <CommentModal
+        user={user}
+        articleid={article_id}
+        show={modalShow}
+        setShow={setModalShow}
+        setComments={setComments}
+        onHide={() => setModalShow(false)}
+      />
     </>
   );
 }

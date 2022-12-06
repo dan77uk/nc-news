@@ -26,11 +26,25 @@ export const patchArticleVote = (id, vote) => {
   const body = {
     inc_votes: vote,
   };
-
   return newsApi
     .patch(`/api/articles/${id}`, body)
     .then((res) => {
       return res.data.article;
+    })
+    .catch((err) => {
+      console.log(err.response);
+    });
+};
+
+export const postComment = (id, user, comment) => {
+  const body = {
+    username: user,
+    body: comment,
+  };
+  return newsApi
+    .post(`api/articles/${id}/comments`, body)
+    .then((res) => {
+      return res.data.comment;
     })
     .catch((err) => {
       console.log(err.response);
