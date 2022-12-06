@@ -109,10 +109,32 @@ main {
 
 .single-article--body {
   border-top: var(--layoutBorder);
-  border-bottom: var(--layoutBorder);
   margin: 20px 0;
-  padding: 40px 0;
+  padding: 40px 0 0 0;
 }
+
+.single-article--voteButtons {
+  border-bottom: solid 1px;
+  padding-bottom: 40px;
+}
+
+.single-article--voteButtons button {
+  font-size: 0.8rem;
+  padding: 3px 12px;
+  cursor: pointer;
+}
+
+.single-article--vote-confirmation {
+  display: inline;
+  border-radius: 5px;
+  padding: 5px 20px;
+  background-color: rgb(123, 193, 65);
+  font-size: 0.8rem;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+
+/*------------------- COMMENTS.JSX ---------------------*/
 
 .single-article--comments {
   padding: 0 40px 40px 40px;

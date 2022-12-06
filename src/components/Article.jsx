@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById, getCommentsByArticleId } from "../api";
+import {
+  getArticleById,
+  getCommentsByArticleId,
+  patchArticleVote,
+} from "../api";
 import Comments from "./Comments";
-
 
 export default function Article() {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [voted, setVoted] = useState(false);
 
   useEffect(() => {
     getArticleById(article_id).then((res) => {
@@ -19,6 +23,23 @@ export default function Article() {
       });
     });
   }, [article_id]);
+
+  const handleVote = (event) => {
+    let voteValue = 0;
+    if (event.target.value === "up") {
+      voteValue = 1;
+    } else {
+      voteValue = -1;
+    }
+    setArticle((currentArticle) => {
+      currentArticle.votes += voteValue;
+      return { ...currentArticle };
+    });
+    setVoted(true);
+    patchArticleVote(article_id, voteValue).then((res) => {
+      return res;
+    });
+  };
 
   return isLoading ? (
     <p className="loading-message">...loading</p>
@@ -37,6 +58,20 @@ export default function Article() {
           </p>
         </div>
         <p className="single-article--body">{article.body}</p>
+        {!voted ? (
+          <div className="single-article--voteButtons">
+            <button onClick={handleVote} value={"up"}>
+              Vote Up
+            </button>
+            <button onClick={handleVote} value={"down"}>
+              Vote Down
+            </button>
+          </div>
+        ) : (
+          <p className="single-article--vote-confirmation">
+            Thank you for your vote
+          </p>
+        )}
       </article>
       <section className="single-article--comments">
         {comments.length === 0 ? (
@@ -52,7 +87,6 @@ export default function Article() {
           </>
         )}
       </section>
-
     </>
   );
 }
