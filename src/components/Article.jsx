@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById, getCommentsByArticleId } from "../api";
+import Comments from "./Comments";
 
 export default function Article() {
   const { article_id } = useParams();
@@ -37,24 +38,18 @@ export default function Article() {
         <p className="single-article--body">{article.body}</p>
       </article>
       <section className="single-article--comments">
-        <h3>Comments</h3>
-        <ul>
-          {comments.map((comment) => {
-            return (
-              <li key={comment.comment_id}>
-                <p className="single-article--comments--comment-body">
-                  {comment.body}
-                </p>
-                <h4>
-                  <span>from</span> {comment.author}
-                </h4>
-                <p className="single-article--comments--votes">
-                  {comment.votes} Votes
-                </p>
-              </li>
-            );
-          })}
-        </ul>
+        {comments.length === 0 ? (
+          <h3>No comments yet</h3>
+        ) : (
+          <>
+            <h3>Comments</h3>
+            <ul>
+              {comments.map((comment) => {
+                return <Comments key={comment.comment_id} comment={comment} />;
+              })}
+            </ul>
+          </>
+        )}
       </section>
     </>
   );
