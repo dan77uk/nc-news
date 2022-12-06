@@ -114,6 +114,26 @@ main {
   padding: 40px 0;
 }
 
+.single-article--comments {
+  padding: 0 40px;
+}
+
+.single-article--comments ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.single-article--comments li {
+  padding: 20px;
+  font-size: 0.9rem;
+  border: var(--layoutBorder);
+  border-radius: 10px;
+}
+
+.single-article--comments li h4 {
+}
+
 @media (max-width: 900px) {
   /*------------------- ARTICLES.JSX ---------------------*/
   .article-list {
