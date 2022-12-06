@@ -124,6 +124,16 @@ main {
   cursor: pointer;
 }
 
+.single-article--vote-confirmation {
+  display: inline;
+  border-radius: 5px;
+  padding: 5px 20px;
+  background-color: rgb(123, 193, 65);
+  font-size: 0.8rem;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+
 /*------------------- COMMENTS.JSX ---------------------*/
 
 .single-article--comments {

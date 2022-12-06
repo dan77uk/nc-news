@@ -12,6 +12,7 @@ export default function Article() {
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [voted, setVoted] = useState(false);
 
   useEffect(() => {
     getArticleById(article_id).then((res) => {
@@ -34,6 +35,7 @@ export default function Article() {
       currentArticle.votes += voteValue;
       return { ...currentArticle };
     });
+    setVoted(true);
     patchArticleVote(article_id, voteValue).then((res) => {
       return res;
     });
@@ -56,14 +58,20 @@ export default function Article() {
           </p>
         </div>
         <p className="single-article--body">{article.body}</p>
-        <div className="single-article--voteButtons">
-          <button onClick={handleVote} value={"up"}>
-            Vote Up
-          </button>
-          <button onClick={handleVote} value={"down"}>
-            Vote Down
-          </button>
-        </div>
+        {!voted ? (
+          <div className="single-article--voteButtons">
+            <button onClick={handleVote} value={"up"}>
+              Vote Up
+            </button>
+            <button onClick={handleVote} value={"down"}>
+              Vote Down
+            </button>
+          </div>
+        ) : (
+          <p className="single-article--vote-confirmation">
+            Thank you for your vote
+          </p>
+        )}
       </article>
       <section className="single-article--comments">
         {comments.length === 0 ? (
