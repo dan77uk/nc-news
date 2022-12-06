@@ -88,7 +88,7 @@ main {
 
 /*------------------- ARTICLE.JSX ---------------------*/
 .single-article {
-  padding: 40px;
+  padding: 40px 40px 20px 40px;
 }
 
 .single-article--topic {
@@ -115,7 +115,13 @@ main {
 }
 
 .single-article--comments {
-  padding: 0 40px;
+  padding: 0 40px 40px 40px;
+}
+
+.single-article--comments h3 {
+  font-size: 1.2rem;
+  color: var(--headline);
+  margin-bottom: 20px;
 }
 
 .single-article--comments ul {
@@ -125,13 +131,32 @@ main {
 }
 
 .single-article--comments li {
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   font-size: 0.9rem;
   border: var(--layoutBorder);
   border-radius: 10px;
 }
 
+.single-article--comments--comment-body {
+  font-style: italic;
+  font-weight: 400;
+  line-height: 2;
+}
+
 .single-article--comments li h4 {
+  margin: 10px 0 20px 0;
+  color: rgb(41, 170, 193);
+}
+
+.single-article--comments li h4 span {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.single-article--comments--votes {
+  margin-top: auto;
 }
 
 @media (max-width: 900px) {
@@ -144,6 +169,10 @@ main {
   .single-article h2 {
     font-size: 4rem;
   }
+
+  .single-article--comments ul {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 700px) {
@@ -155,5 +184,10 @@ main {
   /*------------------- ARTICLE.JSX ---------------------*/
   .single-article h2 {
     font-size: 3rem;
+  }
+
+  .single-article--comments ul {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }

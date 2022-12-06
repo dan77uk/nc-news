@@ -42,11 +42,15 @@ export default function Article() {
           {comments.map((comment) => {
             return (
               <li key={comment.comment_id}>
-                <p>{comment.body}</p>
+                <p className="single-article--comments--comment-body">
+                  {comment.body}
+                </p>
                 <h4>
                   <span>from</span> {comment.author}
                 </h4>
-                <button>{comment.votes}</button>
+                <p className="single-article--comments--votes">
+                  {comment.votes} Votes
+                </p>
               </li>
             );
           })}
