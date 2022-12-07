@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { getTopics } from "../api";
 import { Link } from "react-router-dom";
-import { slide as Menu } from "react-burger-menu";
 
 export default function Nav({ setTopic }) {
   const [topics, setTopics] = useState([]);
@@ -15,32 +14,17 @@ export default function Nav({ setTopic }) {
     });
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  });
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setWidth(window.innerWidth);
+  //   };
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, [width]);
 
-  return width < 700 ? (
-    <Menu pageWrapId={"page-wrap"} outerContainerId={"outer-container"}>
-      <Link to={`/`}>Home</Link>
-      {topics.map((topic) => {
-        return (
-          <Link
-            key={topic.slug}
-            to={`/${topic.slug}`}
-            onClick={() => setTopic(topic.slug)}
-          >
-            {topic.slug}
-          </Link>
-        );
-      })}
-    </Menu>
-  ) : (
+  return (
     <nav className="main-nav">
       <ul>
         <li>

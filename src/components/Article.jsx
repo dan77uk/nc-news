@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getArticleById, patchArticleVote } from "../api";
 import Comments from "./comments/Comments";
-import Button from "react-bootstrap/Button";
+import { format } from "date-fns";
 
 export default function Article({ user }) {
   const { article_id } = useParams();
@@ -16,6 +16,9 @@ export default function Article({ user }) {
       setIsLoading(false);
     });
   }, [article_id]);
+
+  const dt = new Date(article.created_at);
+  const readableDate = format(dt, "HH:MM E do LLL y");
 
   const handleVote = (event) => {
     let voteValue = 0;
@@ -57,6 +60,7 @@ export default function Article({ user }) {
             {article.votes} Likes
           </p>
           <p>{article.comment_count} Comments</p>
+          <p className="single-article--article-info--date">{readableDate}</p>
         </div>
         <p className="single-article--body">{article.body}</p>
         {!voted ? (

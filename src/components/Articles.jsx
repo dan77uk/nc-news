@@ -6,7 +6,7 @@ export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { topic } = useParams();
-  let pageTitle = "All Articles";
+  let pageTitle = "All";
   if (topic) {
     pageTitle = topic;
   }
@@ -26,7 +26,7 @@ export default function Articles() {
     </article>
   ) : (
     <>
-      <h3 className="articles-title">{pageTitle}</h3>
+      <h3 className="articles-title">{pageTitle} Articles</h3>
       <ul className="article-list">
         {articles.map((article) => {
           const dt = new Date(article.created_at);

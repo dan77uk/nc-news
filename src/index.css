@@ -9,22 +9,25 @@
   --layoutBorder: solid 1px rgb(182, 182, 182);
   --headline-font: "Bebas Neue", cursive;
   font-family: "Poppins", sans-serif;
-  --max-width: 1200px;
-  --background: #f8f7f8;
+  --max-width: 1400px;
+  --whiteLink: #f8f7f8;
   --header: #37424d;
   --offblue: #7c98a5;
   --fuscia: #c14070;
   --orange: #d7904a;
+  /* alt colors */
+  --background: #fffce1;
+  --orange: #c94e50;
+  --orange: #c14070;
 }
 
 body {
-  background-color: var(--background) !important;
+  background-color: #ededed !important;
 }
 
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  box-shadow: 10px 100px 100px 90px rgba(220, 220, 220, 0.2);
 }
 /*------------------- LOADING WRAPPER ------------------*/
 .loading-wrapper {
@@ -41,7 +44,7 @@ main {
 }
 /*------------------- HEADER.JSX -----------------------*/
 header {
-  background: var(--header);
+  background: #37424d;
 }
 
 header section {
@@ -62,10 +65,6 @@ header h1 {
   color: var(--background);
 }
 /*------------------- NAV.JSX --------------------------*/
-.main-nav {
-  /* border: var(--layoutBorder); */
-}
-
 .main-nav ul {
   padding: 0;
   margin: 0;
@@ -75,7 +74,7 @@ header h1 {
 }
 
 .main-nav ul li a {
-  color: var(--background);
+  color: var(--whiteLink);
   text-decoration: none;
   padding: 5px 10px;
   transition: 0.4s;
@@ -83,40 +82,8 @@ header h1 {
 }
 
 .main-nav ul li a:hover {
-  background-color: var(--orange);
-}
-
-/*------------------- Burger menu ----------------------*/
-
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  right: 40px;
-  top: 20px;
-}
-
-.bm-burger-bars {
-  background: #373a47;
-}
-
-.bm-burger-bars-hover {
-  background: #a90000;
-}
-
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
-
-.bm-cross {
-  background: #bdc3c7;
-}
-
-.bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
+  background-color: var(--whiteLink);
+  color: var(--header);
 }
 
 /*------------------- ARTICLES.JSX ---------------------*/
@@ -133,20 +100,21 @@ header h1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
-  color: var(--background);
+  color: var(--header);
 }
 
 .article-list li {
-  border-radius: 20px;
+  border-radius: 40px 5px 40px 5px;
   display: flex;
   flex-direction: column;
   padding: 30px;
-  background-color: var(--header);
-  box-shadow: 5px 5px 10px 2px rgba(140, 140, 140, 0.4);
+  background-color: var(--whiteLink);
+  box-shadow: 5px 5px 10px 2px rgba(140, 140, 140, 0.2);
+  transition: 0.3s;
 }
 
 .article-list li:hover {
-  box-shadow: 5px 5px 10px 2px rgba(140, 140, 140, 0.8);
+  box-shadow: 5px 5px 10px 2px rgba(140, 140, 140, 0.4);
 }
 
 .article-list--date {
@@ -180,7 +148,7 @@ header h1 {
 .article-list--article-info--link a:hover {
   text-decoration: none;
   color: var(--background);
-  background-color: var(--offblue);
+  background-color: var(--header);
 }
 
 .article-list--article-info h4 {
@@ -189,11 +157,11 @@ header h1 {
 }
 
 .article-list--article-info h4 a {
-  color: var(--background);
+  color: var(--orange);
 }
 
 .article-list--article-info h4 a:hover {
-  color: var(--orange);
+  color: var(--header);
 }
 
 .article-list--article-info--interactions {
@@ -213,7 +181,11 @@ header h1 {
 
 /*------------------- ARTICLE.JSX ---------------------*/
 .single-article {
-  padding: 40px;
+  padding: 80px;
+  margin: 20px 40px;
+  background: var(--whiteLink);
+  box-shadow: 5px 5px 10px 2px rgba(140, 140, 140, 0.2);
+  border-radius: 40px 5px 40px 5px;
 }
 
 .single-article--breadcrumb {
@@ -245,7 +217,7 @@ header h1 {
   font-family: "Bebas Neue", cursive;
   line-height: 1;
   color: var(--header);
-  margin: 0;
+  margin: 20px 0;
 }
 
 .single-article--article-info {
@@ -259,8 +231,12 @@ header h1 {
   border: solid 1px;
 }
 
+.single-article--article-info--date {
+  margin-left: auto;
+}
+
 .single-article--body {
-  border-top: solid 1px var(--offblue);
+  border-top: solid 1px #d4d4d4;
   margin: 0;
   padding: 50px 0 25px 0;
 }
@@ -277,7 +253,7 @@ header h1 {
   border: none;
   color: var(--background);
   border-radius: 5px;
-  background-color: var(--fuscia);
+  background-color: var(--orange);
   transition: 0.4s;
 }
 
@@ -306,7 +282,6 @@ header h1 {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  border-top: solid 1px var(--offblue);
   padding-top: 20px;
   margin-bottom: 20px;
   color: var(--header);
@@ -319,7 +294,7 @@ header h1 {
   border: none;
   color: var(--background);
   border-radius: 5px;
-  background-color: var(--fuscia);
+  background-color: var(--orange);
   transition: 0.4s;
 }
 
@@ -346,8 +321,9 @@ header h1 {
   display: flex;
   flex-direction: column;
   padding: 40px;
-  border: solid 1px var(--offblue);
-  border-radius: 10px;
+  background: var(--whiteLink);
+  box-shadow: 5px 5px 10px 2px rgba(140, 140, 140, 0.2);
+  border-radius: 40px 5px 40px 5px;
 }
 
 .single-article--comments--comment-body {
@@ -363,7 +339,7 @@ header h1 {
 }
 
 .single-article--comments li h4 {
-  color: var(--orange);
+  color: var(--fuscia);
   font-size: 1rem;
 }
 
@@ -409,7 +385,7 @@ header h1 {
   margin-bottom: 20px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   /*------------------- ARTICLES.JSX ---------------------*/
   .article-list {
     grid-template-columns: 1fr 1fr;
