@@ -1,21 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  getArticleById,
-  getCommentsByArticleId,
-  patchArticleVote,
-} from "../api";
-import Comments from "./Comments";
-import CommentModal from "./CommentModal";
+import { getArticleById, patchArticleVote } from "../api";
+import Comments from "./comments/Comments";
 import Button from "react-bootstrap/Button";
 
 export default function Article({ user }) {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
-  const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [voted, setVoted] = useState(false);
-  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
     getArticleById(article_id).then((res) => {
@@ -23,12 +16,6 @@ export default function Article({ user }) {
       setIsLoading(false);
     });
   }, [article_id]);
-
-  useEffect(() => {
-    getCommentsByArticleId(article_id).then((res) => {
-      setComments(res);
-    });
-  }, [comments]);
 
   const handleVote = (event) => {
     let voteValue = 0;
@@ -80,43 +67,7 @@ export default function Article({ user }) {
         )}
       </article>
 
-      <section className="single-article--comments">
-        {comments.length === 0 ? (
-          <div className="single-article--comments--title">
-            <h3>No comments yet</h3>
-          </div>
-        ) : (
-          <>
-            <div className="single-article--comments--title">
-              <h3>Comments</h3>
-              {user ? (
-                <Button
-                  variant="outline-primary"
-                  size="sm"
-                  onClick={() => setModalShow(true)}
-                >
-                  Add a comment
-                </Button>
-              ) : (
-                <button>Login to comment</button>
-              )}
-            </div>
-            <ul>
-              {comments.map((comment) => {
-                return <Comments key={comment.comment_id} comment={comment} />;
-              })}
-            </ul>
-          </>
-        )}
-      </section>
-      <CommentModal
-        user={user}
-        articleid={article_id}
-        show={modalShow}
-        setShow={setModalShow}
-        setComments={setComments}
-        onHide={() => setModalShow(false)}
-      />
+      <Comments article_id={article_id} user={user} />
     </>
   );
 }

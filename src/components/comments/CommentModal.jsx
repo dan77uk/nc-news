@@ -1,34 +1,37 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
-import { postComment } from "../api";
+import { postComment } from "../../api";
 
 export default function CommentModal(props) {
   const [comment, setComment] = useState("");
+  const [emptyWarning, setEmptyWarning] = useState(true);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (comment.length < 5) {
-      console.log("Cannot be empty");
-    } else {
-      postComment(props.articleid, props.user, comment).then((res) => {
-        props.setComments((currentComments) => {
-          return [...currentComments, res];
-        });
-        props.setShow(false);
+    postComment(props.articleid, props.user, comment).then((res) => {
+      props.setComments((currentComments) => {
+        return [...currentComments, res];
       });
-    }
+      props.setShow(false);
+      props.setSuccessMessage(true);
+    });
   };
 
   const handleCommentInput = (event) => {
     setComment(event.target.value);
+    if (comment.length > 15) {
+      setEmptyWarning(false);
+    } else {
+      setEmptyWarning(true);
+    }
   };
 
   return (
     <Modal
       show={props.show}
       onHide={props.onHide}
-      size="lg"
+      size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -41,17 +44,21 @@ export default function CommentModal(props) {
         <div className="commentForm">
           <form onSubmit={handleSubmit}>
             <textarea onChange={handleCommentInput}></textarea>
-            <Button variant="success" type="submit">
-              Submit Comment
-            </Button>
+            {!emptyWarning ? (
+              <Button variant="success" type="submit">
+                Submit Comment
+              </Button>
+            ) : (
+              <p>Please enter a comment of longer than 15 characters.</p>
+            )}
           </form>
         </div>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="outline-danger" onClick={props.onHide}>
+      {/* <Modal.Footer>
+        <Button variant="outline-danger" size="sm" onClick={props.onHide}>
           Close
         </Button>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 }

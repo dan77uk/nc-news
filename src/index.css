@@ -10,6 +10,7 @@
   font-family: "Bebas Neue", cursive;
   font-family: "Poppins", sans-serif;
   --headline: rgb(53, 72, 79);
+  --white: rgb(255, 255, 255);
 }
 
 main {
@@ -48,16 +49,15 @@ main {
 }
 
 .article-list--article-info {
-  margin-top: auto;
+  margin: auto 0 0 0;
 }
 
 .article-list--article-info h4 {
-  font-weight: 200;
-  font-size: 0.8rem;
-  background-color: var(--headline);
-  color: rgb(237, 237, 237);
-  padding: 6px 12px;
-  border-radius: 5px;
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 10px 0;
+  border-top: var(--layoutBorder);
+  border-bottom: var(--layoutBorder);
 }
 
 .article-list--article-info--interactions {
@@ -85,6 +85,12 @@ main {
 
 .article-list--article-info--interactions p:last-child {
   background-color: rgb(226, 217, 43);
+}
+
+.article-list--date {
+  font-size: 0.8rem;
+  color: rgb(95, 95, 95);
+  margin: 0;
 }
 
 /*------------------- ARTICLE.JSX ---------------------*/
@@ -189,7 +195,27 @@ main {
   margin: auto 0 0 0;
 }
 
+.single-article--comments--confirm-comment-post {
+  background-color: rgb(62, 148, 130);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--white);
+  font-size: 0.9rem;
+}
+
 /*------------------- COMMENTMODAL.JSX ---------------------*/
+.modal-header {
+  background-color: rgb(60, 106, 126);
+  padding: 20px 40px !important;
+  color: var(--white);
+}
+
+.modal-header .btn-close {
+  background-color: var(--white);
+  opacity: 1;
+}
+
 .commentForm {
   margin: 20px;
 }
