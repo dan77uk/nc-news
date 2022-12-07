@@ -1,26 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  getArticleById,
-  getCommentsByArticleId,
-  patchArticleVote,
-} from "../api";
-import Comments from "./Comments";
+import { getArticleById, patchArticleVote } from "../api";
+import Comments from "./comments/Comments";
+import Button from "react-bootstrap/Button";
 
-export default function Article() {
+export default function Article({ user }) {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
-  const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [voted, setVoted] = useState(false);
 
   useEffect(() => {
     getArticleById(article_id).then((res) => {
       setArticle(res);
-      getCommentsByArticleId(article_id).then((res) => {
-        setComments(res);
-        setIsLoading(false);
-      });
+      setIsLoading(false);
     });
   }, [article_id]);
 
@@ -60,12 +53,12 @@ export default function Article() {
         <p className="single-article--body">{article.body}</p>
         {!voted ? (
           <div className="single-article--voteButtons">
-            <button onClick={handleVote} value={"up"}>
+            <Button variant="primary" onClick={handleVote} value={"up"}>
               Vote Up
-            </button>
-            <button onClick={handleVote} value={"down"}>
+            </Button>
+            <Button variant="secondary" onClick={handleVote} value={"down"}>
               Vote Down
-            </button>
+            </Button>
           </div>
         ) : (
           <p className="single-article--vote-confirmation">
@@ -73,20 +66,8 @@ export default function Article() {
           </p>
         )}
       </article>
-      <section className="single-article--comments">
-        {comments.length === 0 ? (
-          <h3>No comments yet</h3>
-        ) : (
-          <>
-            <h3>Comments</h3>
-            <ul>
-              {comments.map((comment) => {
-                return <Comments key={comment.comment_id} comment={comment} />;
-              })}
-            </ul>
-          </>
-        )}
-      </section>
+
+      <Comments article_id={article_id} user={user} />
     </>
   );
 }

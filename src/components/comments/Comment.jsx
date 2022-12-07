@@ -1,4 +1,4 @@
-export default function Comments(comment) {
+export default function Comment(comment) {
   return (
     <li>
       <p className="single-article--comments--comment-body">

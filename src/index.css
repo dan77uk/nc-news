@@ -10,6 +10,7 @@
   font-family: "Bebas Neue", cursive;
   font-family: "Poppins", sans-serif;
   --headline: rgb(53, 72, 79);
+  --white: rgb(255, 255, 255);
 }
 
 main {
@@ -48,16 +49,15 @@ main {
 }
 
 .article-list--article-info {
-  margin-top: auto;
+  margin: auto 0 0 0;
 }
 
 .article-list--article-info h4 {
-  font-weight: 200;
-  font-size: 0.8rem;
-  background-color: var(--headline);
-  color: rgb(237, 237, 237);
-  padding: 6px 12px;
-  border-radius: 5px;
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 10px 0;
+  border-top: var(--layoutBorder);
+  border-bottom: var(--layoutBorder);
 }
 
 .article-list--article-info--interactions {
@@ -71,6 +71,7 @@ main {
 .article-list--article-info--interactions p {
   padding: 4px 12px;
   border-radius: 5px;
+  margin: 0;
 }
 
 .article-list--article-info--interactions p span {
@@ -84,6 +85,12 @@ main {
 
 .article-list--article-info--interactions p:last-child {
   background-color: rgb(226, 217, 43);
+}
+
+.article-list--date {
+  font-size: 0.8rem;
+  color: rgb(95, 95, 95);
+  margin: 0;
 }
 
 /*------------------- ARTICLE.JSX ---------------------*/
@@ -113,11 +120,6 @@ main {
   padding: 40px 0 0 0;
 }
 
-.single-article--voteButtons {
-  border-bottom: solid 1px;
-  padding-bottom: 40px;
-}
-
 .single-article--voteButtons button {
   font-size: 0.8rem;
   padding: 3px 12px;
@@ -137,25 +139,37 @@ main {
 /*------------------- COMMENTS.JSX ---------------------*/
 
 .single-article--comments {
-  padding: 0 40px 40px 40px;
+  margin: 0 40px;
+}
+
+.single-article--comments--title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: var(--layoutBorder);
+  padding-top: 20px;
+  margin-bottom: 20px;
 }
 
 .single-article--comments h3 {
   font-size: 1.2rem;
   color: var(--headline);
-  margin-bottom: 20px;
+  line-height: 1;
+  margin: 0;
 }
 
 .single-article--comments ul {
+  padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px;
+  gap: 20px;
 }
 
 .single-article--comments li {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 10px;
   font-size: 0.9rem;
   border: var(--layoutBorder);
   border-radius: 10px;
@@ -178,7 +192,40 @@ main {
 }
 
 .single-article--comments--votes {
-  margin-top: auto;
+  margin: auto 0 0 0;
+}
+
+.single-article--comments--confirm-comment-post {
+  background-color: rgb(62, 148, 130);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--white);
+  font-size: 0.9rem;
+}
+
+/*------------------- COMMENTMODAL.JSX ---------------------*/
+.modal-header {
+  background-color: rgb(60, 106, 126);
+  padding: 20px 40px !important;
+  color: var(--white);
+}
+
+.modal-header .btn-close {
+  background-color: var(--white);
+  opacity: 1;
+}
+
+.commentForm {
+  margin: 20px;
+}
+.commentForm textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  border: var(--layoutBorder);
+  margin-bottom: 20px;
 }
 
 @media (max-width: 900px) {

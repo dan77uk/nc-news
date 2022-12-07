@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getArticles } from "../api";
+import { format } from "date-fns";
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -19,6 +20,8 @@ export default function Articles() {
   ) : (
     <ul className="article-list">
       {articles.map((article) => {
+        const dt = new Date(article.created_at);
+        const readableDate = format(dt, "E do LLL y");
         return (
           <li key={article.article_id}>
             <h3>
@@ -38,6 +41,7 @@ export default function Articles() {
                   <span>{article.comment_count}</span> Comments
                 </p>
               </div>
+              <p className="article-list--date">Published on {readableDate}</p>
             </div>
           </li>
         );
