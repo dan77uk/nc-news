@@ -33,13 +33,9 @@ export default function Comments({ article_id, user }) {
             <div className="single-article--comments--title">
               <h3>Comments</h3>
               {user ? (
-                <Button
-                  variant="outline-primary"
-                  size="sm"
-                  onClick={() => setModalShow(true)}
-                >
+                <button onClick={() => setModalShow(true)}>
                   Add a comment
-                </Button>
+                </button>
               ) : (
                 <button>Login to comment</button>
               )}

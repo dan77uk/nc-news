@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getArticleById, patchArticleVote } from "../api";
 import Comments from "./comments/Comments";
 import Button from "react-bootstrap/Button";
@@ -35,30 +35,38 @@ export default function Article({ user }) {
   };
 
   return isLoading ? (
-    <p className="loading-message">...loading</p>
+    <article className="loading-wrapper">
+      <p>... loading</p>
+    </article>
   ) : (
     <>
       <article className="single-article">
-        <p className="single-article--topic">{article.topic}</p>
+        <ul className="single-article--breadcrumb">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            {" "}
+            <Link to={`/${article.topic}`}>{article.topic}</Link>
+          </li>
+        </ul>
         <h2>{article.title}</h2>
-        <h3>By {article.author}</h3>
-        <div className="article-list--article-info--interactions">
-          <p>
-            <span>{article.votes}</span> Votes
+        <div className="single-article--article-info">
+          <p>By {article.author}</p>
+          <p className="single-article--article-info--likes">
+            {article.votes} Likes
           </p>
-          <p>
-            <span>{article.comment_count}</span> Comments
-          </p>
+          <p>{article.comment_count} Comments</p>
         </div>
         <p className="single-article--body">{article.body}</p>
         {!voted ? (
           <div className="single-article--voteButtons">
-            <Button variant="primary" onClick={handleVote} value={"up"}>
-              Vote Up
-            </Button>
-            <Button variant="secondary" onClick={handleVote} value={"down"}>
-              Vote Down
-            </Button>
+            <button onClick={handleVote} value={"up"}>
+              Yay?
+            </button>
+            <button onClick={handleVote} value={"down"}>
+              Nay?
+            </button>
           </div>
         ) : (
           <p className="single-article--vote-confirmation">

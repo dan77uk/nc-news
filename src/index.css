@@ -7,132 +7,291 @@
   list-style-type: none;
   box-sizing: border-box;
   --layoutBorder: solid 1px rgb(182, 182, 182);
-  font-family: "Bebas Neue", cursive;
+  --headline-font: "Bebas Neue", cursive;
   font-family: "Poppins", sans-serif;
-  --headline: rgb(53, 72, 79);
-  --white: rgb(255, 255, 255);
+  --max-width: 1200px;
+  --background: #f8f7f8;
+  --header: #37424d;
+  --offblue: #7c98a5;
+  --fuscia: #c14070;
+  --orange: #d7904a;
+}
+
+body {
+  background-color: var(--background) !important;
 }
 
 main {
-  max-width: 1200px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  box-shadow: 10px 100px 100px 90px rgba(220, 220, 220, 0.2);
+}
+/*------------------- LOADING WRAPPER ------------------*/
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  font-size: 5rem;
+}
+
+.loading-wrapper p {
+  font-family: "Bebas Neue", cursive !important;
+  color: var(--orange);
+}
+/*------------------- HEADER.JSX -----------------------*/
+header {
+  background: var(--header);
+}
+
+header section {
+  display: flex;
+  align-items: flex-end;
+  padding: 30px 40px;
+  justify-content: space-between;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
+
+header h1 {
+  font-family: "Bebas Neue", cursive;
+  font-size: 3rem;
+  padding: 0;
+  margin: 0;
+  line-height: 0.9;
+  color: var(--background);
+}
+/*------------------- NAV.JSX --------------------------*/
+.main-nav {
+  /* border: var(--layoutBorder); */
+}
+
+.main-nav ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+  text-transform: uppercase;
+}
+
+.main-nav ul li a {
+  color: var(--background);
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: 0.4s;
+  border-radius: 5px;
+}
+
+.main-nav ul li a:hover {
+  background-color: var(--orange);
+}
+
+/*------------------- Burger menu ----------------------*/
+
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 40px;
+  top: 20px;
+}
+
+.bm-burger-bars {
+  background: #373a47;
+}
+
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
 /*------------------- ARTICLES.JSX ---------------------*/
+.articles-title {
+  padding: 20px 40px 0 70px;
+  font-size: 2rem;
+  text-transform: capitalize;
+  font-family: var(--headline-font);
+  margin: 0;
+  color: var(--offblue);
+}
 .article-list {
-  padding: 40px;
-  border: var(--layoutBorder);
+  padding: 10px 40px 40px 40px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
+  color: var(--background);
 }
 
 .article-list li {
-  border: var(--layoutBorder);
-  border-radius: 5px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 30px;
+  background-color: var(--header);
+  box-shadow: 5px 5px 10px 2px rgba(140, 140, 140, 0.4);
+}
+
+.article-list li:hover {
+  box-shadow: 5px 5px 10px 2px rgba(140, 140, 140, 0.8);
+}
+
+.article-list--date {
+  font-size: 0.8rem;
+  font-weight: 200;
+  margin: 0 0 10px 0;
 }
 
 .article-list li h3 {
   font-size: 3rem;
   font-family: "Bebas Neue", cursive;
-  line-height: 1;
-  color: var(--headline);
-  margin-bottom: 20px;
-}
-
-.article-list li h3 span {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 400;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
 }
 
 .article-list--article-info {
   margin: auto 0 0 0;
 }
+.article-list--article-info--link a {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  background-color: var(--orange);
+  padding: 3px 12px;
+  border-radius: 5px;
+  color: var(--background);
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.article-list--article-info--link a:hover {
+  text-decoration: none;
+  color: var(--background);
+  background-color: var(--offblue);
+}
 
 .article-list--article-info h4 {
-  font-weight: 400;
   font-size: 0.9rem;
-  padding: 10px 0;
-  border-top: var(--layoutBorder);
-  border-bottom: var(--layoutBorder);
+  font-weight: 400;
+}
+
+.article-list--article-info h4 a {
+  color: var(--background);
+}
+
+.article-list--article-info h4 a:hover {
+  color: var(--orange);
 }
 
 .article-list--article-info--interactions {
   display: flex;
-  font-size: 0.9rem;
-  margin-top: auto;
   font-size: 0.8rem;
-  gap: 10px;
+  justify-content: space-between;
+  margin: 20px 0 0 0;
+  padding: 10px 0 0 0;
+  border-top: solid 1px var(--offblue);
 }
 
 .article-list--article-info--interactions p {
-  padding: 4px 12px;
+  padding: 0;
   border-radius: 5px;
-  margin: 0;
-}
-
-.article-list--article-info--interactions p span {
-  font-size: 1rem;
-  font-family: "Bebas Neue", cursive;
-}
-
-.article-list--article-info--interactions p:first-child {
-  background-color: rgb(204, 235, 242);
-}
-
-.article-list--article-info--interactions p:last-child {
-  background-color: rgb(226, 217, 43);
-}
-
-.article-list--date {
-  font-size: 0.8rem;
-  color: rgb(95, 95, 95);
   margin: 0;
 }
 
 /*------------------- ARTICLE.JSX ---------------------*/
 .single-article {
-  padding: 40px 40px 20px 40px;
+  padding: 40px;
 }
 
-.single-article--topic {
+.single-article--breadcrumb {
+  margin: 0 0 20px 0;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background: var(--offblue);
+  display: flex;
+  gap: 20px;
+}
+
+.single-article--breadcrumb li a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--background);
   text-transform: capitalize;
+  font-style: italic;
+  transition: 0.3s;
+}
+
+.single-article--breadcrumb li a:hover {
+  text-decoration: underline;
+  font-weight: 600;
+  color: var(--header);
 }
 
 .single-article h2 {
-  font-size: 5rem;
+  font-size: 6rem;
   font-family: "Bebas Neue", cursive;
   line-height: 1;
-  color: var(--headline);
-  margin-top: 20px;
+  color: var(--header);
+  margin: 0;
 }
 
-.single-article .article-list--article-info--interactions {
-  margin: 20px 0;
+.single-article--article-info {
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.single-article--article-info--likes {
+  border: solid 1px;
 }
 
 .single-article--body {
-  border-top: var(--layoutBorder);
-  margin: 20px 0;
-  padding: 40px 0 0 0;
+  border-top: solid 1px var(--offblue);
+  margin: 0;
+  padding: 50px 0 25px 0;
+}
+
+.single-article--voteButtons {
+  display: flex;
+  gap: 5px;
 }
 
 .single-article--voteButtons button {
   font-size: 0.8rem;
-  padding: 3px 12px;
+  padding: 5px 20px;
   cursor: pointer;
+  border: none;
+  color: var(--background);
+  border-radius: 5px;
+  background-color: var(--fuscia);
+  transition: 0.4s;
+}
+
+.single-article--voteButtons button:hover {
+  background: var(--offblue) !important;
 }
 
 .single-article--vote-confirmation {
   display: inline;
   border-radius: 5px;
   padding: 5px 20px;
-  background-color: rgb(123, 193, 65);
+  background-color: var(--orange);
   font-size: 0.8rem;
-  color: rgb(255, 255, 255);
+  color: var(--background);
   font-weight: 600;
 }
 
@@ -147,9 +306,25 @@ main {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  border-top: var(--layoutBorder);
+  border-top: solid 1px var(--offblue);
   padding-top: 20px;
   margin-bottom: 20px;
+  color: var(--header);
+}
+
+.single-article--comments--title button {
+  font-size: 0.8rem;
+  padding: 5px 20px;
+  cursor: pointer;
+  border: none;
+  color: var(--background);
+  border-radius: 5px;
+  background-color: var(--fuscia);
+  transition: 0.4s;
+}
+
+.single-article--comments--title button:hover {
+  background: var(--offblue);
 }
 
 .single-article--comments h3 {
@@ -163,15 +338,15 @@ main {
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  color: var(--headline);
+  gap: 40px;
 }
 
 .single-article--comments li {
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  font-size: 0.9rem;
-  border: var(--layoutBorder);
+  padding: 40px;
+  border: solid 1px var(--offblue);
   border-radius: 10px;
 }
 
@@ -181,34 +356,40 @@ main {
   line-height: 2;
 }
 
+.single-article--comments li div {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: solid 1px var(--offblue);
+}
+
 .single-article--comments li h4 {
-  margin: 10px 0 20px 0;
-  color: rgb(41, 170, 193);
+  color: var(--orange);
+  font-size: 1rem;
 }
 
 .single-article--comments li h4 span {
-  font-weight: 400;
+  font-weight: 200;
   font-style: italic;
 }
 
 .single-article--comments--votes {
-  margin: auto 0 0 0;
+  font-size: 0.8rem;
 }
 
 .single-article--comments--confirm-comment-post {
-  background-color: rgb(62, 148, 130);
+  background-color: var(--fuscia);
   padding: 10px;
   border-radius: 10px;
   text-align: center;
-  color: var(--white);
+  color: var(--background);
   font-size: 0.9rem;
 }
 
 /*------------------- COMMENTMODAL.JSX ---------------------*/
 .modal-header {
-  background-color: rgb(60, 106, 126);
+  background-color: var(--header);
   padding: 20px 40px !important;
-  color: var(--white);
+  color: var(--background);
 }
 
 .modal-header .btn-close {
