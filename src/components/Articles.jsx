@@ -3,23 +3,36 @@ import { Link, useParams } from "react-router-dom";
 import { getArticles } from "../api";
 import { format } from "date-fns";
 import Filter from "./Filter";
+import ErrorPage from "./ErrorPage";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [order, setOrder] = useState("desc");
   const [sort, setSort] = useState();
+  const [error, setError] = useState(false);
   const { topic } = useParams();
+
   let pageTitle = "All";
   if (topic) {
     pageTitle = topic;
   }
+
   useEffect(() => {
-    getArticles(topic, sort, order).then((result) => {
-      setArticles(result);
-      setIsLoading(false);
-    });
+    setError(false);
+    getArticles(topic, sort, order)
+      .then((result) => {
+        setArticles(result);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(true);
+      });
   }, [topic, order, sort]);
+
+  if (error) {
+    return <ErrorPage />;
+  }
 
   return isLoading ? (
     <article className="loading-wrapper">
