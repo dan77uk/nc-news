@@ -8,6 +8,7 @@ export default function Comments({ article_id, user }) {
   const [articleComments, setArticleComments] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const [successMessage, setSuccessMessage] = useState(false);
+  const [deleteConfirmation, setDeleteConfirmation] = useState(false);
 
   useEffect(() => {
     getCommentsByArticleId(article_id).then((res) => {
@@ -20,9 +21,18 @@ export default function Comments({ article_id, user }) {
       setSuccessMessage(false);
     }, 5000);
   }
-
+  if (deleteConfirmation) {
+    setTimeout(() => {
+      setDeleteConfirmation(false);
+    }, 3000);
+  }
   return (
     <>
+      {deleteConfirmation ? (
+        <div className="confirm-delete">
+          <p>Comment deleted</p>
+        </div>
+      ) : null}
       <section className="single-article--comments">
         {articleComments.length === 0 ? (
           <div className="single-article--comments--title">
@@ -47,7 +57,15 @@ export default function Comments({ article_id, user }) {
             ) : null}
             <ul>
               {articleComments.map((comment) => {
-                return <Comment key={comment.comment_id} comment={comment} />;
+                return (
+                  <Comment
+                    key={comment.comment_id}
+                    comment={comment}
+                    user={user}
+                    setArticleComments={setArticleComments}
+                    setDeleteConfirmation={setDeleteConfirmation}
+                  />
+                );
               })}
             </ul>
           </>

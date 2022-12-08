@@ -348,6 +348,14 @@ header h1 {
   font-style: italic;
 }
 
+.single-article--comments--delete {
+  border: none;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  padding: 4px 16px;
+  background-color: #d48c1f;
+  color: var(--whiteLink);
+}
 .single-article--comments--votes {
   font-size: 0.8rem;
 }
@@ -359,6 +367,28 @@ header h1 {
   text-align: center;
   color: var(--background);
   font-size: 0.9rem;
+}
+
+.confirm-delete {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(2, 2, 2, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-delete p {
+  text-align: center;
+  font-size: 3rem;
+  padding: 80px 160px;
+  color: var(--orange);
+  font-family: var(--headline-font);
+  background-color: var(--whiteLink);
+  border-radius: 40px 5px 40px 5px;
 }
 
 /*------------------- COMMENTMODAL.JSX ---------------------*/
