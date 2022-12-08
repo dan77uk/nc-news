@@ -47,7 +47,13 @@ export default function Comments({ article_id, user }) {
             ) : null}
             <ul>
               {articleComments.map((comment) => {
-                return <Comment key={comment.comment_id} comment={comment} />;
+                return (
+                  <Comment
+                    key={comment.comment_id}
+                    comment={comment}
+                    user={user}
+                  />
+                );
               })}
             </ul>
           </>

@@ -1,20 +1,24 @@
 import { bubble } from "react-burger-menu";
 import { getArticleById } from "../../api";
 
-export default function Comment(comment) {
+export default function Comment({ comment, user }) {
+  const handleDelete = () => {
+    console.log("dfkhjsd");
+  };
   return (
     <li>
-      <p className="single-article--comments--comment-body">
-        {comment.comment.body}
-      </p>
+      <p className="single-article--comments--comment-body">{comment.body}</p>
       <div>
         <h4>
-          <span>from</span> {comment.comment.author}
+          <span>from</span> {comment.author}
         </h4>
 
         <p className="single-article--comments--votes">
-          {comment.comment.votes} Recommendations
+          {comment.votes} Recommendations
         </p>
+        {comment.author === user ? (
+          <button onClick={handleDelete}>Delete Comment</button>
+        ) : null}
       </div>
     </li>
   );
