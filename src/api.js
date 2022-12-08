@@ -64,3 +64,14 @@ export const postComment = (id, user, comment) => {
       console.log(err.response);
     });
 };
+
+export const deleteComment = (id) => {
+  return newsApi
+    .delete(`/api/comments/${id}`)
+    .then((res) => {
+      return res.status;
+    })
+    .catch((err) => {
+      console.log(err.response);
+    });
+};

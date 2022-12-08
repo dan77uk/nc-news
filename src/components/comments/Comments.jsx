@@ -52,6 +52,7 @@ export default function Comments({ article_id, user }) {
                     key={comment.comment_id}
                     comment={comment}
                     user={user}
+                    setArticleComments={setArticleComments}
                   />
                 );
               })}

@@ -1,9 +1,19 @@
-import { bubble } from "react-burger-menu";
-import { getArticleById } from "../../api";
+import { deleteComment } from "../../api";
 
-export default function Comment({ comment, user }) {
+export default function Comment({ comment, user, setArticleComments }) {
   const handleDelete = () => {
-    console.log("dfkhjsd");
+    setArticleComments((currentComments) => {
+      currentComments.splice(
+        currentComments.findIndex((element) => {
+          return element.comment_id === comment.comment_id;
+        }),
+        1
+      );
+      return [...currentComments];
+    });
+    deleteComment(comment.comment_id).then((res) => {
+      console.log(res);
+    });
   };
   return (
     <li>
@@ -17,7 +27,12 @@ export default function Comment({ comment, user }) {
           {comment.votes} Recommendations
         </p>
         {comment.author === user ? (
-          <button onClick={handleDelete}>Delete Comment</button>
+          <button
+            className="single-article--comments--delete"
+            onClick={handleDelete}
+          >
+            Delete Comment
+          </button>
         ) : null}
       </div>
     </li>
