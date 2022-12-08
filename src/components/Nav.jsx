@@ -31,13 +31,17 @@ export default function Nav({ setTopic }) {
           <Link to={`/`}>Home</Link>
         </li>
 
-        {topics.map((topic) => {
-          return (
-            <li key={topic.slug} onClick={() => setTopic(topic.slug)}>
-              <Link to={`/${topic.slug}`}>{topic.slug}</Link>
-            </li>
-          );
-        })}
+        {isLoading ? (
+          <li>Loading topics</li>
+        ) : (
+          topics.map((topic) => {
+            return (
+              <li key={topic.slug} onClick={() => setTopic(topic.slug)}>
+                <Link to={`/${topic.slug}`}>{topic.slug}</Link>
+              </li>
+            );
+          })
+        )}
       </ul>
     </nav>
   );
