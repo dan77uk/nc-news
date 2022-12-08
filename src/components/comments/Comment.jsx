@@ -1,18 +1,23 @@
 import { deleteComment } from "../../api";
 
-export default function Comment({ comment, user, setArticleComments }) {
+export default function Comment({
+  comment,
+  user,
+  setArticleComments,
+  setDeleteConfirmation,
+}) {
   const handleDelete = () => {
     setArticleComments((currentComments) => {
-      currentComments.splice(
-        currentComments.findIndex((element) => {
-          return element.comment_id === comment.comment_id;
-        }),
-        1
-      );
-      return [...currentComments];
+      const newComments = currentComments.reduce((acc, curr) => {
+        if (curr.comment_id !== comment.comment_id) {
+          acc.push(curr);
+        }
+        return acc;
+      }, []);
+      return [...newComments];
     });
-    deleteComment(comment.comment_id).then((res) => {
-      console.log(res);
+    deleteComment(comment.comment_id).then(() => {
+      setDeleteConfirmation(true);
     });
   };
   return (

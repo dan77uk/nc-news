@@ -369,6 +369,28 @@ header h1 {
   font-size: 0.9rem;
 }
 
+.confirm-delete {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(2, 2, 2, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-delete p {
+  text-align: center;
+  font-size: 3rem;
+  padding: 80px 160px;
+  color: var(--orange);
+  font-family: var(--headline-font);
+  background-color: var(--whiteLink);
+  border-radius: 40px 5px 40px 5px;
+}
+
 /*------------------- COMMENTMODAL.JSX ---------------------*/
 .modal-header {
   background-color: var(--header);
