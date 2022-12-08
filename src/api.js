@@ -4,10 +4,23 @@ const newsApi = axios.create({
   baseURL: "https://dp-api.cyclic.app",
 });
 
-export const getArticles = () => {
-  return newsApi.get("/api/articles").then((res) => {
-    return res.data.articles;
-  });
+export const getArticles = (topic, author) => {
+  return newsApi
+    .get("/api/articles", { params: { topic, author } })
+    .then((res) => {
+      return res.data.articles;
+    });
+};
+
+export const getTopics = () => {
+  return newsApi
+    .get("/api/topics")
+    .then((res) => {
+      return res.data.topics;
+    })
+    .catch((err) => {
+      console.log(err.response);
+    });
 };
 
 export const getArticleById = (id) => {
