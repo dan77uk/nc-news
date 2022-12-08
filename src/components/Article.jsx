@@ -17,9 +17,6 @@ export default function Article({ user }) {
     });
   }, [article_id]);
 
-  const dt = new Date(article.created_at);
-  const readableDate = format(dt, "HH:MM E do LLL y");
-
   const handleVote = (event) => {
     let voteValue = 0;
     if (event.target.value === "up") {
@@ -60,7 +57,6 @@ export default function Article({ user }) {
             {article.votes} Likes
           </p>
           <p>{article.comment_count} Comments</p>
-          <p className="single-article--article-info--date">{readableDate}</p>
         </div>
         <p className="single-article--body">{article.body}</p>
         {!voted ? (
