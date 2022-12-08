@@ -9,14 +9,12 @@ export default function App() {
   const [user, setUser] = useState("cooljmessy");
   const [topic, setTopic] = useState("");
 
-  const NewErrorPage = ErrorPage();
-
   return (
     <>
       <Header setTopic={setTopic} />
       <main>
         <Routes>
-          <Route path="*" element={NewErrorPage} />
+          <Route path="*" element={<ErrorPage />} />
           <Route path="/" element={<Articles />} />
           <Route
             path="/articles/:article_id"
