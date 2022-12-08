@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import { getCommentsByArticleId } from "../../api";
 import CommentModal from "./CommentModal";
-import Button from "react-bootstrap/Button";
 
 export default function Comments({ article_id, user }) {
   const [articleComments, setArticleComments] = useState([]);

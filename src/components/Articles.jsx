@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getArticles } from "../api";
 import { format } from "date-fns";
-export default function Articles({ order, sort }) {
+import Filter from "./Filter";
+
+export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [order, setOrder] = useState("desc");
+  const [sort, setSort] = useState();
   const { topic } = useParams();
   let pageTitle = "All";
   if (topic) {
@@ -23,6 +27,8 @@ export default function Articles({ order, sort }) {
     </article>
   ) : (
     <>
+      <Filter setOrder={setOrder} setSort={setSort} />
+
       <h3 className="articles-title">{pageTitle} Articles</h3>
       <ul className="article-list">
         {articles.map((article) => {
