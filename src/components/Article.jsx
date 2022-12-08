@@ -3,18 +3,25 @@ import { useParams, Link } from "react-router-dom";
 import { getArticleById, patchArticleVote } from "../api";
 import Comments from "./comments/Comments";
 import { format } from "date-fns";
+import ErrorPage from "./ErrorPage";
 
 export default function Article({ user }) {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [voted, setVoted] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    getArticleById(article_id).then((res) => {
-      setArticle(res);
-      setIsLoading(false);
-    });
+    setError(false);
+    getArticleById(article_id)
+      .then((res) => {
+        setArticle(res);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(true);
+      });
   }, [article_id]);
 
   const handleVote = (event) => {
@@ -33,6 +40,10 @@ export default function Article({ user }) {
       return res;
     });
   };
+
+  if (error) {
+    return <ErrorPage />;
+  }
 
   return isLoading ? (
     <article className="loading-wrapper">

@@ -9,19 +9,13 @@ export const getArticles = (topic, sort_by, order) => {
     .get("/api/articles", { params: { topic, sort_by, order } })
     .then((res) => {
       return res.data.articles;
-    })
-    .catch((err) => [console.log(err.response)]);
+    });
 };
 
 export const getTopics = () => {
-  return newsApi
-    .get("/api/topics")
-    .then((res) => {
-      return res.data.topics;
-    })
-    .catch((err) => {
-      console.log(err.response);
-    });
+  return newsApi.get("/api/topics").then((res) => {
+    return res.data.topics;
+  });
 };
 
 export const getArticleById = (id) => {
@@ -40,14 +34,9 @@ export const patchArticleVote = (id, vote) => {
   const body = {
     inc_votes: vote,
   };
-  return newsApi
-    .patch(`/api/articles/${id}`, body)
-    .then((res) => {
-      return res.data.article;
-    })
-    .catch((err) => {
-      console.log(err.response);
-    });
+  return newsApi.patch(`/api/articles/${id}`, body).then((res) => {
+    return res.data.article;
+  });
 };
 
 export const postComment = (id, user, comment) => {
@@ -55,23 +44,13 @@ export const postComment = (id, user, comment) => {
     username: user,
     body: comment,
   };
-  return newsApi
-    .post(`api/articles/${id}/comments`, body)
-    .then((res) => {
-      return res.data.comment;
-    })
-    .catch((err) => {
-      console.log(err.response);
-    });
+  return newsApi.post(`api/articles/${id}/comments`, body).then((res) => {
+    return res.data.comment;
+  });
 };
 
 export const deleteComment = (id) => {
-  return newsApi
-    .delete(`/api/comments/${id}`)
-    .then((res) => {
-      return res.status;
-    })
-    .catch((err) => {
-      console.log(err.response);
-    });
+  return newsApi.delete(`/api/comments/${id}`).then((res) => {
+    return res.status;
+  });
 };

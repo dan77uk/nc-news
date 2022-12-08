@@ -3,16 +3,20 @@ import Articles from "./components/Articles";
 import Article from "./components/Article";
 import { useState } from "react";
 import Header from "./components/Header";
+import ErrorPage from "./components/ErrorPage";
 
 export default function App() {
   const [user, setUser] = useState("cooljmessy");
   const [topic, setTopic] = useState("");
+
+  const NewErrorPage = ErrorPage();
 
   return (
     <>
       <Header setTopic={setTopic} />
       <main>
         <Routes>
+          <Route path="*" element={NewErrorPage} />
           <Route path="/" element={<Articles />} />
           <Route
             path="/articles/:article_id"
