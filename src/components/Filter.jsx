@@ -18,8 +18,8 @@ export default function Filter({ setOrder, setSort }) {
       <label>
         Order
         <select onChange={handleOrder}>
-          <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
         </select>
       </label>
 

@@ -22,7 +22,10 @@ export default function App() {
             path="/articles/:article_id"
             element={<Article user={user} />}
           />
-          <Route path="/:topic" element={<Articles />} />
+          <Route
+            path="/:topic"
+            element={<Articles order={order} sort={sort} />}
+          />
         </Routes>
       </main>
     </>
