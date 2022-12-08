@@ -385,6 +385,13 @@ header h1 {
   margin-bottom: 20px;
 }
 
+/*--------------------- FILTER.JSX -----------------------*/
+.filter-container {
+  margin: 10px 40px;
+  padding: 20px;
+  border: solid 1px;
+}
+
 @media (max-width: 960px) {
   /*------------------- ARTICLES.JSX ---------------------*/
   .article-list {

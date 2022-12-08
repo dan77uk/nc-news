@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getArticles } from "../api";
 import { format } from "date-fns";
-export default function Articles() {
+export default function Articles({ order, sort }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { topic } = useParams();
@@ -10,15 +10,12 @@ export default function Articles() {
   if (topic) {
     pageTitle = topic;
   }
-
   useEffect(() => {
-    getArticles(topic)
-      .then((result) => {
-        setArticles(result);
-        setIsLoading(false);
-      })
-      .catch((err) => console.log(err.response));
-  }, [topic]);
+    getArticles(topic, sort, order).then((result) => {
+      setArticles(result);
+      setIsLoading(false);
+    });
+  }, [topic, order, sort]);
 
   return isLoading ? (
     <article className="loading-wrapper">
