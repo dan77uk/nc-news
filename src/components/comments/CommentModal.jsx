@@ -1,4 +1,3 @@
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import { postComment } from "../../api";
@@ -45,20 +44,13 @@ export default function CommentModal(props) {
           <form onSubmit={handleSubmit}>
             <textarea onChange={handleCommentInput}></textarea>
             {!emptyWarning ? (
-              <Button variant="success" type="submit">
-                Submit Comment
-              </Button>
+              <button type="submit">Submit Comment</button>
             ) : (
               <p>Please enter a comment of longer than 15 characters.</p>
             )}
           </form>
         </div>
       </Modal.Body>
-      {/* <Modal.Footer>
-        <Button variant="outline-danger" size="sm" onClick={props.onHide}>
-          Close
-        </Button>
-      </Modal.Footer> */}
     </Modal>
   );
 }

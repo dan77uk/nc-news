@@ -27,12 +27,7 @@ export default function Comments({ article_id, user }) {
   }
   return (
     <>
-      {deleteConfirmation ? (
-        <div className="confirm-delete">
-          <p>Comment deleted</p>
-        </div>
-      ) : null}
-      <section className="single-article--comments">
+      <section className="single-article--comments" id="comments">
         {articleComments.length === 0 ? (
           <div className="single-article--comments--title">
             <h3>No comments yet</h3>
@@ -52,6 +47,11 @@ export default function Comments({ article_id, user }) {
             {successMessage ? (
               <p className="single-article--comments--confirm-comment-post">
                 You're comment has been successfully posted
+              </p>
+            ) : null}
+            {deleteConfirmation ? (
+              <p className="single-article--comments--confirm-comment-post">
+                Comment deleted
               </p>
             ) : null}
             <ul>
@@ -79,7 +79,6 @@ export default function Comments({ article_id, user }) {
         onHide={() => setModalShow(false)}
         setSuccessMessage={setSuccessMessage}
       />
-      ;
     </>
   );
 }

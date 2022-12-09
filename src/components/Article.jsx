@@ -76,7 +76,9 @@ export default function Article({ user }) {
             {article.votes} <span>Recommendations</span>
           </p>
           <p className="single-article--article-info--comments">
-            {article.comment_count} <span>Comments</span>
+            <a href="#comments">
+              {article.comment_count} <span>Comments</span>
+            </a>
           </p>
         </div>
         <p className="single-article--body">{article.body}</p>
