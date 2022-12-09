@@ -18,7 +18,7 @@ export default function Comments({ article_id, user }) {
   if (successMessage) {
     setTimeout(() => {
       setSuccessMessage(false);
-    }, 5000);
+    }, 3000);
   }
   if (deleteConfirmation) {
     setTimeout(() => {

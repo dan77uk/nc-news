@@ -13,9 +13,6 @@
   --whiteLink: #f8f7f8;
   --header: #37424d;
   --offblue: #7c98a5;
-  --fuscia: #c14070;
-  --orange: #d7904a;
-  /* alt colors */
   --background: #fffce1;
   --red-highlight: #c14070;
 }
@@ -170,7 +167,7 @@ header h1 {
 .article-list--article-info--link a:hover {
   text-decoration: none;
   color: var(--background);
-  background-color: var(--header);
+  background-color: var(--offblue);
 }
 
 .article-list--article-info h4 {
@@ -469,7 +466,7 @@ header h1 {
 }
 
 .single-article--comments--confirm-comment-post {
-  background-color: var(--fuscia);
+  background-color: var(--red-highlight);
   padding: 10px;
   border-radius: 10px;
   text-align: center;
@@ -597,6 +594,19 @@ header h1 {
 }
 
 @media (max-width: 550px) {
+  .article-list li h3 {
+    font-size: 2rem;
+  }
+
+  .article-list--article-info--link a {
+    font-size: 0.7rem;
+    padding: 6px 8px;
+  }
+
+  .article-list--article-info h4 {
+    font-size: 0.8rem;
+  }
+
   .filter-container {
     margin-top: 10px;
   }
