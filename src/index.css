@@ -34,7 +34,7 @@ main {
 .error-container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 40px;
+  padding: 20px;
 }
 
 .error-container h2 {
@@ -63,10 +63,10 @@ header {
 }
 
 header section {
-  display: flex;
-  align-items: flex-end;
-  padding: 30px 40px;
-  justify-content: space-between;
+  /* display: flex;
+  align-items: flex-end; */
+  padding: 30px 20px;
+  /* justify-content: space-between; */
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -78,14 +78,19 @@ header h1 {
   margin: 0;
   line-height: 0.9;
   color: var(--background);
+  text-align: center;
 }
 /*------------------- NAV.JSX --------------------------*/
 .main-nav ul {
   padding: 0;
-  margin: 0;
+  margin: 40px 0 0 0;
   display: flex;
+  justify-content: center;
   gap: 15px;
   text-transform: uppercase;
+}
+
+.main-nav ul li {
 }
 
 .main-nav ul li a {
@@ -102,19 +107,27 @@ header h1 {
 }
 
 /*------------------- ARTICLES.JSX ---------------------*/
-.articles-title {
-  padding: 20px 40px 0 70px;
-  font-size: 2rem;
+.articles-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-radius: 0 0 10px 10px;
+  padding: 20px;
+  background-color: #e1e1e1;
+  margin: 0 20px;
+}
+.articles-title-container h3 {
+  font-size: 1.46rem;
   text-transform: capitalize;
   font-family: var(--headline-font);
   margin: 0;
-  color: var(--offblue);
+  color: var(--header);
 }
 .article-list {
-  padding: 10px 40px 40px 40px;
+  padding: 10px 20px 40px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 30px;
+  gap: 20px;
   color: var(--header);
 }
 
@@ -181,23 +194,33 @@ header h1 {
 
 .article-list--article-info--interactions {
   display: flex;
-  font-size: 0.8rem;
   justify-content: space-between;
   margin: 20px 0 0 0;
   padding: 10px 0 0 0;
-  border-top: solid 1px var(--offblue);
+  border-top: solid 1px #cacaca;
 }
 
 .article-list--article-info--interactions p {
   padding: 0;
   border-radius: 5px;
   margin: 0;
+  padding-left: 25px;
+  font-size: 0.8rem;
+  color: var(--offblue);
+}
+
+.article-list--article-info--interactions p:first-child {
+  background: url("../public/images/thumbsup.svg") no-repeat left top;
+}
+
+.article-list--article-info--interactions p:last-child {
+  background: url("../public/images/comments.svg") no-repeat left top;
 }
 
 /*------------------- ARTICLE.JSX ---------------------*/
 .single-article {
   padding: 80px;
-  margin: 20px 40px;
+  margin: 20px 20px;
   background: var(--whiteLink);
   box-shadow: 5px 5px 10px 2px rgba(140, 140, 140, 0.2);
   border-radius: 40px 5px 40px 5px;
@@ -432,9 +455,29 @@ header h1 {
 
 /*--------------------- FILTER.JSX -----------------------*/
 .filter-container {
-  margin: 10px 40px;
-  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.filter-container article label {
+  display: block;
+  font-size: 0.6rem;
+  text-align: end;
+  font-weight: 600;
+}
+
+.filter-container article select {
+  cursor: pointer;
+  padding: 3px 20px 3px 10px;
+  background-color: var(--whiteLink);
   border: solid 1px;
+  border-radius: 5px;
+  transition: 0.3s;
+  font-size: 0.8rem;
+}
+
+.filter-container article select:hover {
+  background-color: #ffffff;
 }
 
 @media (max-width: 960px) {
