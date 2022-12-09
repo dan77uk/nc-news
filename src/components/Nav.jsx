@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 export default function Nav({ setTopic }) {
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [width, setWidth] = useState();
 
   useEffect(() => {
     getTopics().then((res) => {
@@ -13,16 +12,6 @@ export default function Nav({ setTopic }) {
       setIsLoading(false);
     });
   }, []);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setWidth(window.innerWidth);
-  //   };
-  //   window.addEventListener("resize", handleResize);
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, [width]);
 
   return (
     <nav className="main-nav">
