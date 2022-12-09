@@ -49,12 +49,9 @@ main {
   justify-content: center;
   align-items: center;
   height: 80vh;
-  font-size: 5rem;
-}
-
-.loading-wrapper p {
-  font-family: "Bebas Neue", cursive !important;
-  color: var(--red-highlight);
+  font-size: 2rem;
+  background: url("../public/images/preload1.gif") no-repeat center center;
+  background-size: 100px;
 }
 /*------------------- HEADER.JSX -----------------------*/
 header {
@@ -372,8 +369,12 @@ header h1 {
   margin: 0;
   font-size: 1rem;
 }
+#mobile-comment-add {
+  display: none;
+}
 
-.single-article--comments--title button {
+#main-comment-add,
+#login-to-comment {
   font-size: 0.8rem;
   padding: 5px 20px;
   cursor: pointer;
@@ -384,8 +385,16 @@ header h1 {
   transition: 0.4s;
 }
 
-.single-article--comments--title button:hover {
+#main-comment-add:hover {
   background: var(--offblue);
+}
+
+#login-to-comment {
+  background-color: var(--offblue);
+}
+
+#login-to-comment:hover {
+  background-color: var(--red-highlight);
 }
 
 .single-article--comments ul {
@@ -588,6 +597,17 @@ header h1 {
 }
 
 @media (max-width: 550px) {
+  .filter-container {
+    margin-top: 10px;
+  }
+  .filter-container article label {
+    text-align: left;
+  }
+  .articles-title-container {
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+  }
   .single-article--article-info span {
     display: none;
   }
@@ -597,5 +617,29 @@ header h1 {
   .single-article--article-info--likes,
   .single-article--article-info--comments {
     padding-left: 20px;
+  }
+
+  #main-comment-add {
+    display: none;
+  }
+
+  #mobile-comment-add {
+    display: inline;
+    cursor: pointer;
+    border: none;
+    color: var(--background);
+    border-radius: 5px;
+    background: var(--red-highlight);
+    transition: 0.4s;
+    padding: 3px 9px;
+    font-size: 0.8rem;
+  }
+
+  #mobile-comment-add:hover {
+    background: var(--offblue);
+  }
+
+  #login-to-comment span {
+    display: none;
   }
 }

@@ -23,7 +23,9 @@ export default function Articles() {
     getArticles(topic, sort, order)
       .then((result) => {
         setArticles(result);
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 800);
       })
       .catch((err) => {
         setError(true);
@@ -35,9 +37,7 @@ export default function Articles() {
   }
 
   return isLoading ? (
-    <article className="loading-wrapper">
-      <p>... loading</p>
-    </article>
+    <article className="loading-wrapper">{/* <p>... loading</p> */}</article>
   ) : (
     <>
       <div className="articles-title-container">
@@ -66,7 +66,11 @@ export default function Articles() {
 
                 <div className="article-list--article-info--interactions">
                   <p>{article.votes}</p>
-                  <p>{article.comment_count}</p>
+                  <p>
+                    <Link to={`/articles/${article.article_id}#comments`}>
+                      {article.comment_count}
+                    </Link>
+                  </p>
                 </div>
               </div>
             </li>

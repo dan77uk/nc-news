@@ -17,7 +17,9 @@ export default function Article({ user }) {
     getArticleById(article_id)
       .then((res) => {
         setArticle(res);
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
       })
       .catch((err) => {
         setError(true);
@@ -52,9 +54,7 @@ export default function Article({ user }) {
   }
 
   return isLoading ? (
-    <article className="loading-wrapper">
-      <p>... loading</p>
-    </article>
+    <article className="loading-wrapper"></article>
   ) : (
     <>
       <article className="single-article">
