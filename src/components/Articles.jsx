@@ -40,9 +40,11 @@ export default function Articles() {
     </article>
   ) : (
     <>
-      <Filter setOrder={setOrder} setSort={setSort} />
+      <div className="articles-title-container">
+        <h3 className="articles-title">{pageTitle} Articles</h3>
+        <Filter setOrder={setOrder} setSort={setSort} />
+      </div>
 
-      <h3 className="articles-title">{pageTitle} Articles</h3>
       <ul className="article-list">
         {articles.map((article) => {
           const dt = new Date(article.created_at);
@@ -63,12 +65,8 @@ export default function Articles() {
                 </h4>
 
                 <div className="article-list--article-info--interactions">
-                  <p>
-                    <span>{article.votes}</span> Likes
-                  </p>
-                  <p>
-                    <span>{article.comment_count}</span> Comments
-                  </p>
+                  <p>{article.votes}</p>
+                  <p>{article.comment_count}</p>
                 </div>
               </div>
             </li>

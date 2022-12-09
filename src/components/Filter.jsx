@@ -15,22 +15,21 @@ export default function Filter({ setOrder, setSort }) {
   };
   return (
     <section className="filter-container">
-      <label>
-        Order
-        <select onChange={handleOrder}>
+      <article>
+        <label htmlFor="order">ORDER BY</label>
+        <select onChange={handleOrder} id="order">
           <option value="desc">Descending</option>
           <option value="asc">Ascending</option>
         </select>
-      </label>
-
-      <label>
-        Sort By
-        <select onChange={handleSort}>
+      </article>
+      <article>
+        <label htmlFor="sort">SORT BY</label>
+        <select onChange={handleSort} id="sort">
           <option value="default">Date</option>
           <option value="author">Author</option>
           <option value="comment_count">Comment Count</option>
         </select>
-      </label>
+      </article>
     </section>
   );
 }
