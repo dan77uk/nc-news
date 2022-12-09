@@ -66,11 +66,7 @@ export default function Articles() {
 
                 <div className="article-list--article-info--interactions">
                   <p>{article.votes}</p>
-                  <p>
-                    <Link to={`/articles/${article.article_id}#comments`}>
-                      {article.comment_count}
-                    </Link>
-                  </p>
+                  <p>{article.comment_count}</p>
                 </div>
               </div>
             </li>

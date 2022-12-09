@@ -30,7 +30,11 @@ main {
 .error-container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 200px 100px;
 }
 
 .error-container h2 {
@@ -591,6 +595,14 @@ header h1 {
     grid-template-columns: 1fr;
     gap: 10px;
   }
+  /*------------------- ERRORPAGE.JSX ---------------------*/
+  .error-container {
+    padding: 100px 50px;
+  }
+
+  .error-container h2 {
+    font-size: 4rem;
+  }
 }
 
 @media (max-width: 550px) {
@@ -651,5 +663,14 @@ header h1 {
 
   #login-to-comment span {
     display: none;
+  }
+
+  /*------------------- ERRORPAGE.JSX ---------------------*/
+  .error-container {
+    padding: 100px 50px;
+  }
+
+  .error-container h2 {
+    font-size: 3rem;
   }
 }

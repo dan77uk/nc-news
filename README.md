@@ -9,6 +9,8 @@ Northcoders News has articles which are divided into topics. Each article has us
 
 This is a [C.R.U.D](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) application, built in React, with the [API](https://github.com/dan77uk/be-nc-news) built in a Test Driven Development environment using Express, PostgreSQL and Supertest.
 
+![My Image](readmeimages/desktophome.png)
+
 ### Required Node Version
 
 ```

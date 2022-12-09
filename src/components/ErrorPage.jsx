@@ -8,8 +8,8 @@ export default function ErrorPage() {
       <h4>Probably.</h4>
       <p>
         You'd better make your way back to our <Link to="/">Home</Link> just to
-        be sure. It could be bears. Which is terrifying if you stop to think
-        about it.
+        be sure. The problem could be bears. Which is terrifying if you stop to
+        think about it.
       </p>
     </section>
   );
