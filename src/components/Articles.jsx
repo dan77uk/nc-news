@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { getArticles } from "../api";
 import { format } from "date-fns";
 import Filter from "./Filter";
+import Test from "./Test";
 import ErrorPage from "./ErrorPage";
 
 export default function Articles() {
@@ -10,8 +11,9 @@ export default function Articles() {
   const [isLoading, setIsLoading] = useState(true);
   const [order, setOrder] = useState("desc");
   const [sort, setSort] = useState();
+  const [topic, setTopic] = useState();
   const [error, setError] = useState(false);
-  const { topic } = useParams();
+  // const { topic } = useParams();
 
   let pageTitle = "All";
   if (topic) {
@@ -37,12 +39,13 @@ export default function Articles() {
   }
 
   return isLoading ? (
-    <article className="loading-wrapper">{/* <p>... loading</p> */}</article>
+    <article className="loading-wrapper"></article>
   ) : (
     <>
       <div className="articles-title-container">
         <h3 className="articles-title">{pageTitle} Articles</h3>
-        <Filter setOrder={setOrder} setSort={setSort} />
+        {/* <Filter setOrder={setOrder} setSort={setSort} /> */}
+        <Test setOrder={setOrder} setSort={setSort} setTopic={setTopic} />
       </div>
 
       <ul className="article-list">

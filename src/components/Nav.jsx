@@ -19,6 +19,9 @@ export default function Nav({ setTopic }) {
         <li>
           <Link to={`/`}>Home</Link>
         </li>
+        <li>
+          <Link to={`/test`}>Test</Link>
+        </li>
 
         {isLoading ? (
           <li>Loading topics</li>

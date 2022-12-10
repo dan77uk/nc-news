@@ -1,9 +1,10 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Articles from "./components/Articles";
 import Article from "./components/Article";
 import { useState } from "react";
 import Header from "./components/Header";
 import ErrorPage from "./components/ErrorPage";
+import Test from "./components/Test";
 
 export default function App() {
   const [user, setUser] = useState("cooljmessy");
@@ -14,6 +15,7 @@ export default function App() {
       <Header setTopic={setTopic} />
       <main>
         <Routes>
+          <Route path="test" element={<Test />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="/" element={<Articles />} />
           <Route

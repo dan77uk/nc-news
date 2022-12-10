@@ -7,7 +7,7 @@
   list-style-type: none;
   box-sizing: border-box;
   --lightBorder: solid 1px #d4d4d4;
-  --headline-font: "Bebas Neue", cursive;
+  /* --headline-font: "Bebas Neue", cursive; */
   font-family: "Poppins", sans-serif;
   --max-width: 1400px;
   --whiteLink: #f8f7f8;
@@ -15,7 +15,10 @@
   --offblue: #7c98a5;
   --background: #fffce1;
   --red-highlight: #c14070;
+  --headline-font: "Outfit", sans-serif;
 }
+
+/* font-family: 'Outfit', sans-serif; */
 
 body {
   background-color: #ededed !important;
@@ -147,9 +150,11 @@ header h1 {
 }
 
 .article-list li h3 {
-  font-size: 3rem;
-  font-family: "Bebas Neue", cursive;
-  line-height: 1.1;
+  font-size: 2rem;
+  font-family: var(--headline-font);
+  color: #4e545a;
+  font-weight: 900;
+  line-height: 1.2;
   margin: 0 0 20px 0;
 }
 
@@ -253,8 +258,9 @@ header h1 {
 }
 
 .single-article h2 {
-  font-size: 6rem;
-  font-family: "Bebas Neue", cursive;
+  font-size: 4rem;
+  font-family: var(--headline-font);
+  font-weight: 900;
   line-height: 1;
   color: var(--header);
   margin: 10px 0 20px 0;
