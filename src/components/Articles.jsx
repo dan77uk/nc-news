@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { getArticles } from "../api";
 import { format } from "date-fns";
 import Filter from "./Filter";
@@ -9,20 +9,24 @@ import ErrorPage from "./ErrorPage";
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [order, setOrder] = useState("desc");
-  const [sort, setSort] = useState();
-  const [topic, setTopic] = useState();
+  // const [order, setOrder] = useState("desc");
+  // const [sort, setSort] = useState();
+  // const [topic, setTopic] = useState();
   const [error, setError] = useState(false);
   // const { topic } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramsObj = Object.fromEntries([...searchParams]);
+  // const params = Object.values(paramsObj);
 
-  let pageTitle = "All";
-  if (topic) {
-    pageTitle = topic;
-  }
+  // let pageTitle = "All";
+  // if (topic) {
+  //   pageTitle = topic;
+  // }
 
   useEffect(() => {
     setError(false);
-    getArticles(topic, sort, order)
+    getArticles(paramsObj.topic, paramsObj.sort_by, paramsObj.order)
+      // getArticles(topic, sort, order)
       .then((result) => {
         setArticles(result);
         setTimeout(() => {
@@ -32,7 +36,7 @@ export default function Articles() {
       .catch((err) => {
         setError(true);
       });
-  }, [topic, order, sort]);
+  }, [searchParams]);
 
   if (error) {
     return <ErrorPage />;
@@ -43,9 +47,15 @@ export default function Articles() {
   ) : (
     <>
       <div className="articles-title-container">
-        <h3 className="articles-title">{pageTitle} Articles</h3>
+        {/* <h3 className="articles-title">{pageTitle} Articles</h3> */}
         {/* <Filter setOrder={setOrder} setSort={setSort} /> */}
-        <Test setOrder={setOrder} setSort={setSort} setTopic={setTopic} />
+        <Test
+          // setOrder={setOrder}
+          // setSort={setSort}
+          // setTopic={setTopic}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
       </div>
 
       <ul className="article-list">
