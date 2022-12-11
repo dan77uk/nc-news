@@ -209,32 +209,43 @@ header h1 {
 }
 
 /*--------------------- FILTER.JSX -----------------------*/
-.filter-container {
-  display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-  border-radius: 0 0 10px 10px;
-  padding: 20px;
-  background-color: #e1e1e1;
-  margin: 0 20px;
-  align-items: flex-end;
-}
-
-.filter-container label {
-  display: block;
-  font-size: 0.8rem;
-}
-
-.filter-container button {
-  padding: 5px 20px;
-  font-size: 0.8rem;
-  border-radius: 5px;
+#open-filter-button {
   background-color: var(--offblue);
   border: none;
-  color: var(--whiteLink);
+  padding: 5px 25px;
 }
 
-.filter-container select {
+#open-filter-button:active {
+  background-color: #c14070;
+}
+
+#filter-reset {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #d4d8da;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555555;
+}
+.dropdown {
+  margin: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.dropdown-menu.show {
+  padding: 40px;
+  background-color: var(--header);
+}
+
+.filter-select-item {
+  padding: 20px 0;
+}
+
+.filter-select-item select {
   padding: 3px 5px;
   text-transform: capitalize;
   font-size: 0.9rem;
@@ -246,12 +257,27 @@ header h1 {
   width: 100%;
 }
 
-.filter-container select:hover {
+.filter-select-item select:hover {
   border: solid 1px #71848d;
-  background-color: var(--header);
+  background-color: var(--red-highlight);
   color: var(--whiteLink);
 }
 
+.filter-select-item label {
+  display: block;
+  font-size: 0.7rem;
+  margin-left: 5px;
+  color: var(--whiteLink);
+}
+
+.filter-select-item button {
+  padding: 5px 20px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  background-color: var(--offblue);
+  border: none;
+  color: var(--whiteLink);
+}
 /*------------------- ARTICLE.JSX ---------------------*/
 .single-article {
   padding: 80px;

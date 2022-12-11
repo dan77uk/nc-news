@@ -4,6 +4,7 @@ import { getArticles } from "../api";
 import { format } from "date-fns";
 import Filter from "./Filter";
 import ErrorPage from "./ErrorPage";
+import Dropdown from "react-bootstrap/Dropdown";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
@@ -26,6 +27,10 @@ export default function Articles() {
       });
   }, [searchParams]);
 
+  const resetSearchParams = () => {
+    setSearchParams();
+  };
+
   if (error) {
     return <ErrorPage />;
   }
@@ -34,8 +39,24 @@ export default function Articles() {
     <article className="loading-wrapper"></article>
   ) : (
     <>
-      <div className="filter-container">
-        <Filter searchParams={searchParams} setSearchParams={setSearchParams} />
+      <div>
+        <Dropdown>
+          <Dropdown.Toggle variant="success" id="open-filter-button">
+            Filter Results
+          </Dropdown.Toggle>
+          {Object.keys(paramsObj).length === 0 ? null : (
+            <button onClick={resetSearchParams} id="filter-reset">
+              Reset
+            </button>
+          )}
+
+          <Dropdown.Menu>
+            <Filter
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+            />
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
 
       <ul className="article-list">

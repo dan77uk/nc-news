@@ -45,13 +45,9 @@ export default function Filter({ searchParams, setSearchParams }) {
     }
   };
 
-  const reset = () => {
-    setSearchParams();
-  };
-
   return (
     <>
-      <div>
+      <div className="filter-select-item">
         <label htmlFor="category">Article Category</label>
         <select onChange={handleTopic} id="category">
           {isLoading ? (
@@ -67,7 +63,7 @@ export default function Filter({ searchParams, setSearchParams }) {
           )}
         </select>
       </div>
-      <div>
+      <div className="filter-select-item">
         <label htmlFor="sort">Sort By</label>
         <select onChange={handleSort} id="sort">
           <option value="">Date (default)</option>
@@ -75,14 +71,13 @@ export default function Filter({ searchParams, setSearchParams }) {
           <option value="author">Author</option>
         </select>
       </div>
-      <div>
+      <div className="filter-select-item">
         <label htmlFor="order">Order</label>
         <select onChange={handleOrder} id="order">
           <option value="desc">Descending (default)</option>
           <option value="asc">Ascending</option>
         </select>
       </div>
-      <button onClick={reset}>Reset</button>
     </>
   );
 }
