@@ -105,15 +105,6 @@ header h1 {
 }
 
 /*------------------- ARTICLES.JSX ---------------------*/
-.articles-title-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-radius: 0 0 10px 10px;
-  padding: 20px;
-  background-color: #e1e1e1;
-  margin: 0 20px;
-}
 .articles-title-container h3 {
   font-size: 1.46rem;
   text-transform: capitalize;
@@ -215,6 +206,50 @@ header h1 {
 
 .article-list--article-info--interactions p:last-child {
   background: url("../public/images/comments1.svg") no-repeat left top;
+}
+
+/*--------------------- FILTER.JSX -----------------------*/
+.filter-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  border-radius: 0 0 10px 10px;
+  padding: 20px;
+  background-color: #e1e1e1;
+  margin: 0 20px;
+  align-items: flex-end;
+}
+
+.filter-container label {
+  display: block;
+  font-size: 0.8rem;
+}
+
+.filter-container button {
+  padding: 5px 20px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  background-color: var(--offblue);
+  border: none;
+  color: var(--whiteLink);
+}
+
+.filter-container select {
+  padding: 3px 5px;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: solid 1px #bdccd2;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.filter-container select:hover {
+  border: solid 1px #71848d;
+  background-color: var(--header);
+  color: var(--whiteLink);
 }
 
 /*------------------- ARTICLE.JSX ---------------------*/
@@ -520,37 +555,6 @@ header h1 {
 
 .commentForm button:hover {
   background-color: var(--offblue);
-}
-
-/*--------------------- FILTER.JSX -----------------------*/
-.filter-container {
-  display: flex;
-  gap: 20px;
-}
-
-.filter-container article label {
-  display: block;
-  font-size: 0.6rem;
-  text-align: end;
-  font-weight: 600;
-}
-
-.filter-container article select {
-  cursor: pointer;
-  padding: 3px 20px 3px 10px;
-  background-color: var(--whiteLink);
-  border: solid 1px;
-  border-radius: 5px;
-  transition: 0.3s;
-  font-size: 0.8rem;
-}
-
-.filter-container article select:hover {
-  background-color: #ffffff;
-}
-
-.filter-container article select option {
-  padding: 20px 0;
 }
 
 @media (max-width: 960px) {
