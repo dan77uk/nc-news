@@ -4,6 +4,7 @@ import Article from "./components/Article";
 import { useState } from "react";
 import Header from "./components/Header";
 import ErrorPage from "./components/ErrorPage";
+import Login from "./components/Login";
 
 export default function App() {
   const [user, setUser] = useState("cooljmessy");
@@ -19,7 +20,7 @@ export default function App() {
             path="/articles/:article_id"
             element={<Article user={user} />}
           />
-          <Route path="/:topic" element={<Articles />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
     </>

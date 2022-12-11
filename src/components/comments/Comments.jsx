@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import { getCommentsByArticleId } from "../../api";
 import CommentModal from "./CommentModal";
+import { Link } from "react-router-dom";
 
 export default function Comments({ article_id, user }) {
   const [articleComments, setArticleComments] = useState([]);
@@ -53,7 +54,9 @@ export default function Comments({ article_id, user }) {
                 </>
               ) : (
                 <button id="login-to-comment">
-                  Login <span>to comment</span>
+                  <Link to="/login">
+                    Login <span>to comment</span>
+                  </Link>
                 </button>
               )}
             </div>

@@ -54,3 +54,9 @@ export const deleteComment = (id) => {
     return res.status;
   });
 };
+
+export const getUsers = () => {
+  return newsApi.get("/api/users").then((res) => {
+    return res.data.users;
+  });
+};

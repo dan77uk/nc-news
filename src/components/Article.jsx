@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getArticleById, patchArticleVote } from "../api";
 import Comments from "./comments/Comments";
 import { format } from "date-fns";
 import ErrorPage from "./ErrorPage";
+import { UserContext } from "../context/User";
 
-export default function Article({ user }) {
+export default function Article() {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [voted, setVoted] = useState(false);
   const [error, setError] = useState(false);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     setError(false);
