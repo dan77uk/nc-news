@@ -1,11 +1,11 @@
 import Nav from "./Nav";
 
-export default function Header({ setTopic }) {
+export default function Header() {
   return (
     <header>
       <section>
-        <h1>NC News</h1>
-        <Nav setTopic={setTopic} />
+        <h1>ncNews</h1>
+        <Nav />
       </section>
     </header>
   );

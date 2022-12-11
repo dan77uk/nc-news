@@ -7,11 +7,10 @@ import ErrorPage from "./components/ErrorPage";
 
 export default function App() {
   const [user, setUser] = useState("cooljmessy");
-  const [topic, setTopic] = useState("");
 
   return (
     <>
-      <Header setTopic={setTopic} />
+      <Header />
       <main>
         <Routes>
           <Route path="*" element={<ErrorPage />} />
