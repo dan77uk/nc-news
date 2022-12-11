@@ -1,26 +1,21 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getArticles } from "../api";
 import { format } from "date-fns";
 import Filter from "./Filter";
 import ErrorPage from "./ErrorPage";
+import Dropdown from "react-bootstrap/Dropdown";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [order, setOrder] = useState("desc");
-  const [sort, setSort] = useState();
   const [error, setError] = useState(false);
-  const { topic } = useParams();
-
-  let pageTitle = "All";
-  if (topic) {
-    pageTitle = topic;
-  }
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramsObj = Object.fromEntries([...searchParams]);
 
   useEffect(() => {
     setError(false);
-    getArticles(topic, sort, order)
+    getArticles(paramsObj.topic, paramsObj.sort_by, paramsObj.order)
       .then((result) => {
         setArticles(result);
         setTimeout(() => {
@@ -30,19 +25,38 @@ export default function Articles() {
       .catch((err) => {
         setError(true);
       });
-  }, [topic, order, sort]);
+  }, [searchParams]);
+
+  const resetSearchParams = () => {
+    setSearchParams();
+  };
 
   if (error) {
     return <ErrorPage />;
   }
 
   return isLoading ? (
-    <article className="loading-wrapper">{/* <p>... loading</p> */}</article>
+    <article className="loading-wrapper"></article>
   ) : (
     <>
-      <div className="articles-title-container">
-        <h3 className="articles-title">{pageTitle} Articles</h3>
-        <Filter setOrder={setOrder} setSort={setSort} />
+      <div>
+        <Dropdown>
+          <Dropdown.Toggle variant="success" id="open-filter-button">
+            Filter Results
+          </Dropdown.Toggle>
+          {Object.keys(paramsObj).length === 0 ? null : (
+            <button onClick={resetSearchParams} id="filter-reset">
+              Reset
+            </button>
+          )}
+
+          <Dropdown.Menu>
+            <Filter
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+            />
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
 
       <ul className="article-list">
