@@ -485,6 +485,11 @@ header h1 {
   display: none;
 }
 
+#login-to-comment a {
+  color: var(--whiteLink);
+  text-decoration: none;
+}
+
 #main-comment-add,
 #login-to-comment {
   font-size: 0.8rem;
