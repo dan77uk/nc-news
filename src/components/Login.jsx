@@ -5,7 +5,7 @@ import { UserContext } from "../context/User";
 export default function Login() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { setUser, handleLogin } = useContext(UserContext);
+  const { handleLogin } = useContext(UserContext);
 
   useEffect(() => {
     getUsers().then((res) => {

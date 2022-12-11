@@ -8,7 +8,7 @@ export default function Nav() {
   return (
     <nav className="main-nav">
       <ul>
-        <li>
+        <li id="main-nav--home-link">
           <Link to={`/`}>Home</Link>
         </li>
         <li className="logged-id">

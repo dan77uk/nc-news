@@ -88,6 +88,24 @@ header h1 {
   align-items: center;
 }
 
+.main-nav ul a {
+  text-decoration: none;
+}
+
+#main-nav--home-link a {
+  font-size: 1rem;
+  color: var(--whiteLink);
+  padding: 5px 20px;
+  background-color: #2a333b;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+#main-nav--home-link a:hover {
+  background-color: var(--whiteLink);
+  color: var(--header);
+}
+
 .logged-id {
   display: flex;
   gap: 10px;
