@@ -17,7 +17,7 @@ export default function Articles() {
     setError(false);
     getArticles(paramsObj.topic, paramsObj.sort_by, paramsObj.order)
       .then((result) => {
-        setArticles(result);
+        setArticles(result.articles);
         setTimeout(() => {
           setIsLoading(false);
         }, 800);
@@ -66,7 +66,11 @@ export default function Articles() {
           return (
             <li key={article.article_id}>
               <p className="article-list--date">Published on {readableDate}</p>
-              <h3>{article.title}</h3>
+              <h3>
+                <Link to={`/articles/${article.article_id}`}>
+                  {article.title}
+                </Link>
+              </h3>
               <div className="article-list--article-info">
                 <p className="article-list--article-info--link">
                   <Link to={`/articles/${article.article_id}`}>

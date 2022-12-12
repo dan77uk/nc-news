@@ -16,6 +16,7 @@
   --background: #fffce1;
   --red-highlight: #c14070;
   --headline-font: "Outfit", sans-serif;
+  --red-highlight: #37424d;
 }
 
 /* font-family: 'Outfit', sans-serif; */
@@ -59,28 +60,68 @@ main {
 }
 /*------------------- HEADER.JSX -----------------------*/
 header {
-  background: #37424d;
+  background: var(--whiteLink);
 }
 
-header section {
-  padding: 20px 20px;
+.header-main {
+  padding: 20px;
   max-width: var(--max-width);
   margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 
-header h1 {
+.header-main h1 {
   font-family: var(--headline-font);
-  font-size: 4rem;
+  font-family: "Bebas Neue", cursive;
+  font-size: 2rem;
   padding: 0;
   margin: 0;
   line-height: 0.9;
-  color: var(--background);
+  color: var(--red-highlight);
   text-align: center;
 }
+
+.user-header-banner {
+  background-color: var(--header);
+}
+
+.user-header-banner article {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.user-header-banner p {
+  margin: 0;
+  color: var(--whiteLink);
+  font-size: 0.9rem;
+}
+
+.user-header-banner button {
+  margin-left: auto;
+  border-radius: 5px;
+  padding: 3px 12px;
+  background: #eccc15;
+  border: solid 2px #eccc15;
+  color: var(--header);
+  font-size: 0.8rem;
+  transition: 0.3s;
+}
+
+.user-header-banner button:hover {
+  background: none;
+  color: var(--whiteLink);
+}
 /*------------------- NAV.JSX --------------------------*/
+.main-nav {
+  margin-left: auto;
+}
 .main-nav ul {
   padding: 0;
-  margin: 20px 0 0 0;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -93,17 +134,16 @@ header h1 {
 }
 
 #main-nav--home-link a {
-  font-size: 1rem;
-  color: var(--whiteLink);
-  padding: 5px 20px;
-  background-color: #2a333b;
+  color: var(--header);
+  padding: 3px 12px;
   border-radius: 5px;
+  border: solid 2px var(--header);
   transition: 0.3s;
 }
 
 #main-nav--home-link a:hover {
-  background-color: var(--whiteLink);
-  color: var(--header);
+  background-color: var(--header);
+  color: var(--whiteLink);
 }
 
 .logged-id {
@@ -114,38 +154,16 @@ header h1 {
 
 .logged-id a {
   text-decoration: none;
-  padding: 5px 20px;
+  padding: 3px 12px;
   transition: 0.4s;
   border-radius: 5px;
-  font-weight: 600;
   background-color: var(--red-highlight);
+  border: solid 2px var(--red-highlight);
   color: var(--whiteLink);
 }
 
 .logged-id a:hover {
-  background-color: rgb(255, 225, 0);
-  color: var(--header);
-}
-
-.logged-id p {
-  margin: 0;
-  color: var(--whiteLink);
-}
-
-#logged-id--logout {
-  text-decoration: none;
-  padding: 5px 20px;
-  transition: 0.4s;
-  border-radius: 5px;
-  font-weight: 600;
-  background-color: var(--red-highlight);
-  color: var(--whiteLink);
-  border: none;
-}
-
-#logged-id--logout:hover {
-  background-color: rgb(255, 225, 0);
-  color: var(--header);
+  background-color: var(--whiteLink);
 }
 
 /*------------------- ARTICLES.JSX ---------------------*/
@@ -184,13 +202,19 @@ header h1 {
   margin: 0 0 10px 0;
 }
 
-.article-list li h3 {
+.article-list li h3 a {
   font-size: 2rem;
   font-family: var(--headline-font);
   color: #4e545a;
   font-weight: 900;
   line-height: 1.2;
   margin: 0 0 20px 0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.article-list li h3 a:hover {
+  color: var(--offblue);
 }
 
 .article-list--article-info {
@@ -275,7 +299,7 @@ header h1 {
 .dropdown {
   margin: 10px 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 10px;
   align-items: baseline;
 }
